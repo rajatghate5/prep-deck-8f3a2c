@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Prep">
 <meta name="theme-color" content="#15694A">
-<title>Ayuradhar CTO Round — 35 Questions</title>
+<title>Ayuradhar CTO Round — 37 Questions</title>
 <style>
 :root{
   --paper:#F5F7F4;--surface:#fff;--surface2:#EAEFE9;--ink:#14201A;--muted:#5E6B63;--line:#D8DFD8;
@@ -142,7 +141,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
   <div class="ring"><svg width="42" height="42"><circle cx="21" cy="21" r="17" fill="none" stroke="var(--line)" stroke-width="4"/>
     <circle id="rc" cx="21" cy="21" r="17" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"
     stroke-dasharray="107" stroke-dashoffset="107" style="transition:stroke-dashoffset .4s"/></svg><b id="rt">0%</b></div>
-  <div class="brand">Ayuradhar · CTO Round<small id="crumb">35 questions</small></div>
+  <div class="brand">Ayuradhar · CTO Round<small id="crumb">37 questions</small></div>
   <button class="ib" id="theme" title="Theme">◐</button>
   <button class="ib" id="reset" title="Reset">↺</button>
 </div></header>
@@ -152,7 +151,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
   <div class="hero">
     <div class="kicker">Wednesday · 60 minutes</div>
     <h1>Backend-first, brutally.</h1>
-    <p>35 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
+    <p>37 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
   </div>
   <div class="card"><h3>Your 60-second opener</h3>
     <p class="pitch">"Four years, mostly backend. Node/Express + MongoDB services at Kangaroo and Glazer — a matching engine, aggregation pipelines, AWS Rekognition and Lambda for a 100-rider fleet. At Antino I led the Express → NestJS migration on RxMen, a healthcare platform, and designed the Postgres schemas behind appointments, payments and patient records. I also own auth — Cognito, JWT, RBAC — on a SEBI-regulated fintech product. I have real frontend range, but backend and AWS are where I go deep."</p></div>
@@ -177,6 +176,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
     <li><b>API (~20%):</b> Postman Collection Runner for endpoint timing · EXPLAIN (ANALYZE, BUFFERS) + pg_stat_statements for queries · CloudWatch p95/p99 in prod.</li>
     <li><b>Volume (10k+):</b> CloudWatch / API Gateway request count — a counter, not an estimate.</li>
     <li><b>Mongo:</b> .explain("executionStats") · the profiler for slow ops · Atlas Performance Advisor.</li>
+    <li><b>Correctness:</b> Jest + Supertest on NestJS services and routes · Postman collections with pm.test assertions as API contract/smoke tests (Newman to run them in CI) · Playwright for critical UI flows, pre-merge.</li>
     <li><b>Never claimed:</b> a formal load test. If asked, say k6/autocannon is what you'd use and that it's a real gap.</li>
   </ul></div>
   <div class="card"><h3>Decide this before Wednesday</h3><ul>
@@ -224,7 +224,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
 
 <script>
 const SECS=[['open','Opening & the attack'],['node','Node.js'],['db','Postgres & Mongo'],
-['auth','Auth & health data'],['sys','Design & distributed'],['code','Coding'],['fit','Incidents & closing']];
+['auth','Auth & health data'],['sys','Design & distributed'],['code','Coding'],['fit','Testing, incidents & closing']];
 const SN=Object.fromEntries(SECS);
 
 const B=[
@@ -420,6 +420,24 @@ code:"SELECT d.id, d.name, COUNT(*) AS n\nFROM appointments a\nJOIN doctors d ON
 'Keyset pagination uses the index and stays constant-time.',
 'Tradeoff: no jumping to page 50. Fine for feeds.'],
 code:"SELECT * FROM appointments\nWHERE (created_at, id) < ($1, $2)\nORDER BY created_at DESC, id DESC\nLIMIT 20;"},
+
+{s:'fit',d:'trap',
+nk:"If your real coverage was thin, say so and say what you'd fix first: \"the service layer had unit tests, the integration layer didn't — that's the first thing I'd close.\" An honest gap with a plan beats an invented coverage number.",
+q:'You said the NestJS migration made the backend unit-testable. Tested with what, exactly?',a:[
+'Name the stack: Jest as the runner, Supertest for HTTP-level route tests, and Nest\'s Test.createTestingModule to swap real repositories for mocks.',
+'Explain why DI was the unlock — before the migration, business logic was welded to Express req/res, so nothing could be tested without booting a server.',
+'Postman is where the API contract lives: collections per module with pm.test assertions on status, schema and response shape, run as smoke tests after every deploy. Newman is how you\'d put that same collection in CI.',
+'Be precise about what Postman is and isn\'t — it verifies the contract from outside; it does not replace unit tests, and it won\'t catch a broken branch inside a service. Saying that unprompted shows you know the difference.',
+'The pyramid: Jest unit tests on services (fast, most of the suite) → Supertest/Postman at the API boundary → Playwright for critical end-to-end flows only.',
+'Be honest about coverage. "Critical paths covered, not a percentage I\'d quote" beats a number you can\'t defend.']},
+
+{s:'fit',d:'trap',
+nk:"Don't defend AI-generated tests as if they're free. If you haven't audited them closely, say that — \"they catch regressions, but I haven't gone back to check the assertions are meaningful\" — and name it as something you'd tighten.",
+q:'You use Claude to generate your Playwright tests. Do you actually review them?',a:[
+'Yes — frame AI as a first-draft accelerator with you as the reviewer, never as an authority.',
+'Name the specific failure mode: generated tests love asserting on trivia — that an element exists rather than that the flow produced the right outcome. So you review assertions hardest.',
+'Point at the result: regressions caught pre-merge instead of in production.',
+'A 0-to-1 CTO probably wants AI-fluent engineers. Lean in, but show the judgement that makes it safe.']},
 
 {s:'fit',d:'trap',q:'Tell me about the worst bug you shipped to production.',a:[
 'Pick a real one with consequences — your Evify auth or order-tracking incidents are natural material.',
