@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Prep">
+<meta name="theme-color" content="#15694A">
+<title>Ayuradhar CTO Round — 37 Questions</title>
+<style>
+:root{
+  --paper:#F5F7F4;--surface:#fff;--surface2:#EAEFE9;--ink:#14201A;--muted:#5E6B63;--line:#D8DFD8;
+  --accent:#15694A;--accent-soft:#E0EDE6;--warn:#8F6416;--warn-soft:#F1E8D4;--crit:#943E2B;--crit-soft:#F4E2DC;
+  --shadow:0 1px 2px rgba(20,32,26,.05),0 6px 20px rgba(20,32,26,.06);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Charter,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --paper:#0C1210;--surface:#141D19;--surface2:#1C2722;--ink:#E2E9E4;--muted:#8F9E96;--line:#26332C;
+  --accent:#57C193;--accent-soft:#163024;--warn:#D8A445;--warn-soft:#2F2510;--crit:#E28468;--crit-soft:#321912;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3);}}
+:root[data-theme=dark]{
+  --paper:#0C1210;--surface:#141D19;--surface2:#1C2722;--ink:#E2E9E4;--muted:#8F9E96;--line:#26332C;
+  --accent:#57C193;--accent-soft:#163024;--warn:#D8A445;--warn-soft:#2F2510;--crit:#E28468;--crit-soft:#321912;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.3);}
+:root[data-theme=light]{
+  --paper:#F5F7F4;--surface:#fff;--surface2:#EAEFE9;--ink:#14201A;--muted:#5E6B63;--line:#D8DFD8;
+  --accent:#15694A;--accent-soft:#E0EDE6;--warn:#8F6416;--warn-soft:#F1E8D4;--crit:#943E2B;--crit-soft:#F4E2DC;
+  --shadow:0 1px 2px rgba(20,32,26,.05),0 6px 20px rgba(20,32,26,.06);}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans);-webkit-text-size-adjust:100%;
+  padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;text-wrap:balance}
+button,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 15px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);
+  backdrop-filter:blur(12px) saturate(1.4);border-bottom:1px solid var(--line)}
+.top-in{max-width:720px;margin:0 auto;padding:9px 15px;display:flex;align-items:center;gap:10px}
+.ring{width:42px;height:42px;position:relative;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:600 11px var(--mono);font-variant-numeric:tabular-nums}
+.brand{flex:1;min-width:0;font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:-.01em}
+.brand small{display:block;font:500 9.5px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.ib{width:36px;height:36px;flex:none;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line);background:var(--surface);font-size:14px}
+.panel{display:none}.panel.on{display:block}
+.kicker{font:600 10px var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:15px;box-shadow:var(--shadow);margin-top:13px}
+.card h3{font-size:16.5px;margin-bottom:7px}
+.card ul{margin:0;padding-left:17px}
+.card li{margin:5px 0;font-size:14.5px}
+.pitch{font-family:var(--serif);font-size:16px;line-height:1.55;border-left:3px solid var(--accent);padding-left:13px}
+.hero{padding:20px 0 2px}
+.hero h1{font-size:clamp(25px,7vw,35px);line-height:1.1;letter-spacing:-.02em}
+.hero p{color:var(--muted);font-size:14.5px;margin:9px 0 0;max-width:54ch}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.stat{background:var(--surface2);border-radius:9px;padding:9px 11px}
+.stat b{display:block;font:600 18px var(--mono);font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:11.5px;color:var(--muted)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 15px 2px;margin:0 -15px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:var(--surface);
+  font-size:12.5px;font-weight:500;color:var(--muted);white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--paper);font-weight:600}
+.chip .n{font:11px var(--mono);opacity:.6;margin-left:4px}
+/* drill */
+.dtop{display:flex;align-items:center;gap:9px;font:11px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:13px}
+.bar{flex:1;height:4px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.dcard{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:15px;
+  padding:18px;box-shadow:var(--shadow);margin-top:11px;min-height:44vh;display:flex;flex-direction:column;touch-action:pan-y}
+.dcard[data-d=hard]{border-left-color:var(--warn)}
+.dcard[data-d=trap]{border-left-color:var(--crit)}
+.lbl{font:10px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.lbl em{font-style:normal;font-weight:600}
+.qq{font-family:var(--serif);font-size:clamp(19px,5.2vw,24px);line-height:1.3;letter-spacing:-.01em}
+.mine{width:100%;margin-top:14px;min-height:74px;padding:11px;border-radius:10px;border:1px dashed var(--line);
+  background:var(--surface2);font:15px var(--sans);resize:vertical}
+.mine:focus{outline:2px solid var(--accent);border-style:solid}
+.ans{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}}
+.ans ul{margin:0;padding-left:17px}.ans li{font-size:14.5px;margin:6px 0}
+.ans h4{margin:0 0 6px;font:600 10px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;margin:9px 0 0;font:12.5px/1.55 var(--mono)}
+.act{display:flex;gap:7px;margin-top:11px}
+.act button{flex:1;padding:13px 5px;border-radius:11px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:600}
+.act .big{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.act .g{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.act .s{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.act .b{background:var(--crit-soft);color:var(--crit);border-color:transparent}
+.act button:active{transform:scale(.97)}
+.hint{text-align:center;font:11px var(--mono);color:var(--muted);margin-top:9px}
+@media(max-width:640px){.hint{display:none}}
+/* bank */
+.tools{position:sticky;top:57px;z-index:30;background:var(--paper);padding:9px 0 7px;border-bottom:1px solid var(--line)}
+.search{width:100%;padding:10px 13px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:16px}
+.sec-h{display:flex;align-items:baseline;gap:8px;margin:22px 0 7px}
+.sec-h h2{font-size:17px}
+.sec-h span{font:10px var(--mono);color:var(--muted);margin-left:auto}
+.q{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:11px;margin-bottom:8px;box-shadow:var(--shadow)}
+.q[data-d=hard]{border-left-color:var(--warn)}.q[data-d=trap]{border-left-color:var(--crit)}
+.qh{width:100%;text-align:left;padding:12px 13px;display:flex;gap:9px;align-items:flex-start}
+.qh .t{flex:1;font-size:14.5px;line-height:1.4;font-weight:500}
+.dot{width:7px;height:7px;border-radius:99px;flex:none;margin-top:6px;background:var(--line)}
+.q[data-st=good] .dot{background:var(--accent)}
+.q[data-st=shaky] .dot{background:var(--warn)}
+.q[data-st=bad] .dot{background:var(--crit)}
+.qb{padding:0 13px 12px}
+.empty{text-align:center;color:var(--muted);padding:44px 20px;font-size:14px}
+/* mock */
+.clock{font:600 clamp(44px,14vw,66px) var(--mono);text-align:center;font-variant-numeric:tabular-nums;letter-spacing:-.03em;margin:14px 0 2px}
+.clock.hot{color:var(--crit)}
+.tb{display:flex;gap:8px;justify-content:center;margin:14px 0}
+.tb button{padding:11px 20px;border-radius:11px;border:1px solid var(--line);background:var(--surface);font-size:14px;font-weight:600}
+.tb .pri{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.slot{display:flex;gap:10px;align-items:center;padding:9px 11px;border-radius:10px;border:1px solid transparent}
+.slot .mm{font:11px var(--mono);color:var(--muted);width:50px;flex:none;font-variant-numeric:tabular-nums}
+.slot .nm{font-size:14px;flex:1}
+.slot.now{background:var(--accent-soft);border-color:var(--accent)}
+.slot.now .nm{font-weight:600;color:var(--accent)}
+.slot.past{opacity:.38}.slot.past .nm{text-decoration:line-through}
+/* nav */
+.nav{position:fixed;inset:auto 0 0;z-index:50;background:color-mix(in srgb,var(--paper) 93%,transparent);
+  backdrop-filter:blur(14px) saturate(1.4);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.nav div{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.nav button{padding:9px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-size:10.5px;font-weight:600}
+.nav button .ic{font-size:16px;line-height:1}
+.nav button[aria-current=true]{color:var(--accent)}
+.foot{text-align:center;color:var(--muted);font:11.5px var(--mono);padding:24px 0 8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="ring"><svg width="42" height="42"><circle cx="21" cy="21" r="17" fill="none" stroke="var(--line)" stroke-width="4"/>
+    <circle id="rc" cx="21" cy="21" r="17" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"
+    stroke-dasharray="107" stroke-dashoffset="107" style="transition:stroke-dashoffset .4s"/></svg><b id="rt">0%</b></div>
+  <div class="brand">Ayuradhar · CTO Round<small id="crumb">37 questions</small></div>
+  <button class="ib" id="theme" title="Theme">◐</button>
+  <button class="ib" id="reset" title="Reset">↺</button>
+</div></header>
+
+<main>
+<section class="panel on" id="p-brief"><div class="wrap">
+  <div class="hero">
+    <div class="kicker">Wednesday · 60 minutes</div>
+    <h1>Backend-first, brutally.</h1>
+    <p>37 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
+  </div>
+  <div class="card"><h3>Your 60-second opener</h3>
+    <p class="pitch">"Four years, mostly backend. Node/Express + MongoDB services at Kangaroo and Glazer — a matching engine, aggregation pipelines, AWS Rekognition and Lambda for a 100-rider fleet. At Antino I led the Express → NestJS migration on RxMen, a healthcare platform, and designed the Postgres schemas behind appointments, payments and patient records. I also own auth — Cognito, JWT, RBAC — on a SEBI-regulated fintech product. I have real frontend range, but backend and AWS are where I go deep."</p></div>
+  <div class="card"><h3>Numbers to have loaded</h3><div class="g2">
+    <div class="stat"><b>5+</b><span>Postgres modules, RxMen</span></div>
+    <div class="stat"><b>10k+</b><span>req/month — own the smallness</span></div>
+    <div class="stat"><b>~20%</b><span>RxMen response-time cut</span></div>
+    <div class="stat"><b>100+</b><span>riders, Rekognition punch-in</span></div>
+  </div></div>
+  <div class="card"><h3>Three rules for the room</h3><ul>
+    <li><b>Never lead with React.</b> Anchor every answer to RxMen (NestJS/Postgres), Evify or ERoomRent (Mongo/AWS).</li>
+    <li><b>Never say "microservices from day one."</b> Modular monolith, split when a seam hurts.</li>
+    <li><b>Never defend a number you didn't measure.</b> Say how you'd measure it now. Fuzzy is forgiven; bluffing isn't.</li>
+  </ul></div>
+  <div class="card"><h3>Two-evening plan</h3><ul>
+    <li><b>Tonight:</b> Drill → "Traps only". Nine questions. These decide the interview.</li>
+    <li><b>Tuesday:</b> Drill → "Needs work", then one Mock run start to finish.</li>
+    <li>Push the ring past 80%. Anything red on Wednesday morning, skip — don't cram new material.</li>
+  </ul></div>
+  <div class="card"><h3>Answer these yourself before Wednesday</h3><ul>
+    <li>Why was Glazer only five months?</li>
+    <li>What were you doing Aug–Oct 2024?</li>
+    <li>Which real production bug is your "worst bug" story?</li>
+  </ul></div>
+  <div class="foot">Saved on your machine · works offline</div>
+</div></section>
+
+<section class="panel" id="p-drill"><div class="wrap">
+  <div class="dtop"><span id="dpos">1/37</span><span class="bar"><i id="dbar"></i></span>
+    <span id="streak" style="color:var(--accent);font-weight:600"></span></div>
+  <div class="chips" id="dchips"></div>
+  <div class="dcard" id="dcard"></div>
+  <div class="act" id="dact"></div>
+  <p class="hint">space reveal · 1 got it · 2 shaky · 3 no idea · ← →</p>
+</div></section>
+
+<section class="panel" id="p-bank"><div class="wrap">
+  <div class="tools"><input class="search" id="s" placeholder="Search…" autocomplete="off">
+    <div class="chips" id="bchips"></div></div>
+  <div id="list"></div><div class="foot">tap to reveal</div>
+</div></section>
+
+<section class="panel" id="p-mock"><div class="wrap">
+  <div class="kicker" style="padding-top:18px">Live pacing</div>
+  <div class="clock" id="clock">60:00</div>
+  <div class="tb"><button class="pri" id="tgo">Start</button><button id="trs">Reset</button></div>
+  <div id="slots"></div>
+  <div class="card"><h3>If you're running out of time</h3><ul>
+    <li>Narrate the coding answer instead of typing it — most CTOs accept that.</li>
+    <li>Never sacrifice your closing questions. Three sharp ones beat one more design detail.</li>
+    <li>Design going badly? "Let me restate my assumptions and start from the write path."</li>
+  </ul></div>
+  <div class="foot">keeps running in the background</div>
+</div></section>
+</main>
+
+<nav class="nav"><div>
+  <button data-p="brief" aria-current="true"><span class="ic">◈</span>Brief</button>
+  <button data-p="drill"><span class="ic">◉</span>Drill</button>
+  <button data-p="bank"><span class="ic">☰</span>Bank</button>
+  <button data-p="mock"><span class="ic">◷</span>Mock</button>
+</div></nav>
+
+<script>
+const SECS=[['open','Opening & the attack'],['node','Node.js'],['db','Postgres & Mongo'],
+['auth','Auth & health data'],['sys','Design & distributed'],['code','Coding'],['fit','Fit & closing']];
+const SN=Object.fromEntries(SECS);
+
+const B=[
+{s:'open',d:'trap',q:'Your résumé headline says React, Next.js, Svelte. This role is backend-mandatory. Why are you here?',a:[
+'Reframe the ordering, not the skill set: "that headline reflects my latest project, not my weight class. I started backend and never left it."',
+'Get concrete in ten seconds: NestJS migration, TypeORM schema design, Mongo aggregation pipelines, Cognito flows, Lambda crons.',
+'Offer proof: "ask me anything about the RxMen data model or how I killed the query timeouts at Evify."']},
+
+{s:'open',d:'expected',q:'Walk me through your background in two minutes.',a:[
+'Kangaroo (18 mo) → Node/Express/Mongo, matching engine + aggregation pipelines.',
+'Glazer/Evify → Node backend, Mongo schemas, Rekognition + S3 + Lambda + SNS, 100-rider fleet.',
+'Antino (2 yr, promoted) → RxMen: Express→NestJS, Postgres schemas for 5 modules. Karat: Cognito auth + Next.js app.',
+'Land on: "backend and AWS are where I go deep."']},
+
+{s:'open',d:'trap',q:'Three companies in four years, and Glazer was only five months. Will you leave in six?',a:[
+'Answer flat, no hedging — Kangaroo 18 months, Antino 2 years with a promotion. The pattern is stable.',
+'Give the true one-sentence reason for Glazer. Don\'t improvise it in the room.',
+'Pivot: "each move was toward more backend ownership. Ground-floor and onsite is exactly what I\'d stay for."']},
+
+{s:'open',d:'trap',q:'"10k+ monthly requests" is one request every four minutes. Why is that on your résumé?',a:[
+'Own it, never inflate: "that\'s the honest number for that product\'s stage."',
+'Show you know what changes: "at 10k/month, pooling and indexing are optional. At millions/day they are the whole job."',
+'Then prove it anyway: "here\'s what I\'d do differently at 1000× — pooling, read replicas, caching, partitioning."']},
+
+{s:'open',d:'trap',q:'Which of this did you personally build, and which did your team build?',a:[
+'Volunteer the split before they dig — credibility is won here.',
+'Yours: Cognito auth flows, NestJS migration, Postgres schema design, Mongo aggregation pipelines, Evify AWS integrations.',
+'Shared: Karat architecture decisions and the fintech backend services. Saying "that part wasn\'t mine" once buys trust for everything else.']},
+
+{s:'node',d:'expected',q:'Explain the Node event loop.',a:[
+'Phases: timers → pending callbacks → poll → check (setImmediate) → close. Microtasks drain between every phase — nextTick first, then promises.',
+'poll is where I/O callbacks run and where the loop blocks when nothing else is pending.',
+'Consequence that matters: one synchronous heavy function stalls every request on that process.']},
+
+{s:'node',d:'hard',q:'Node is single-threaded. How do you use a 16-core box, and where does CPU-heavy work go?',a:[
+'Correct the premise: JS execution is single-threaded; libuv runs a threadpool (default 4) for fs, DNS, crypto, zlib.',
+'Scale out: cluster/PM2, or N containers behind a load balancer — the latter on ECS/K8s.',
+'CPU-bound: worker_threads, or better, off the request path entirely onto a queue. PDF and report generation is exactly that.']},
+
+{s:'node',d:'trap',q:'What\'s wrong with items.forEach(async i => { await save(i) })?',a:[
+'forEach ignores the returned promise — nothing is awaited and rejections vanish unhandled.',
+'Sequential: for…of with await. Parallel: Promise.all(items.map(save)) — but unbounded parallelism exhausts the DB pool.',
+'The answer that sounds experienced: bound it.'],
+code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  await Promise.all(items.slice(i, i + limit).map(save));\n}"},
+
+{s:'node',d:'hard',q:'How do you handle errors in async Node? What about uncaughtException?',a:[
+'Express 4 does not catch async rejections — wrap handlers or they never reach error middleware. NestJS ExceptionFilter does it for you.',
+'One centralised handler mapping domain errors to HTTP codes.',
+'unhandledRejection/uncaughtException: log with context, then exit and let the orchestrator restart. Never serve from a corrupted process.']},
+
+{s:'node',d:'hard',q:'You migrated RxMen from Express to NestJS. Why, and what did it cost?',a:[
+'Before: fat controllers, business logic tangled with HTTP, nothing unit-testable.',
+'After: enforced module boundaries and DI, so services test with mocked repositories. Guards for authz, Pipes for DTO validation, Interceptors for logging.',
+'Volunteer the cost: more boilerplate, steeper curve, and the migration had to be incremental — strangler-fig, route group by route group.']},
+
+{s:'db',d:'trap',q:'Two patients book the same slot in the same millisecond. What does your code do?',a:[
+'Best answer, say it first: a UNIQUE constraint on (doctor_id, slot_start). One insert wins; the other gets 23505, which you translate into "slot just taken".',
+'Say explicitly that an application-level check-then-insert is a race — that\'s the signal they\'re looking for.',
+'Alternatives: SELECT … FOR UPDATE inside a transaction, or SERIALIZABLE with retry. A Redis lock is an optimisation; the DB constraint is truth.']},
+
+{s:'db',d:'expected',q:'Walk me through the Postgres schema you designed for RxMen.',a:[
+'Tables: patients, doctors, availability/slots, appointments, payments, prescriptions.',
+'Correctness lives in constraints: FKs, UNIQUE (doctor_id, slot_start), status as an enum.',
+'Indexes with reasons: (doctor_id, slot_start) for availability, (patient_id, created_at DESC) for history. Soft-delete + audit columns — healthcare never hard-deletes.']},
+
+{s:'db',d:'hard',q:'WHERE doctor_id=$1 AND status=$2 ORDER BY slot_start — design the index.',a:[
+'(doctor_id, status, slot_start): equality columns first, then the ORDER BY column so the sort is free.',
+'Leftmost-prefix — it serves doctor_id alone, but never status alone.',
+'If you always want one status, a partial index WHERE status=\'booked\' is smaller. Cost to name: every index slows writes.']},
+
+{s:'db',d:'hard',q:'How did you cut RxMen response time ~20%?',a:[
+'Structure it: measured → found → fixed → re-measured. If you didn\'t instrument properly, say so and describe what you\'d do now.',
+'Real causes: N+1 from TypeORM lazy relations, missing composite index, SELECT * pulling unused columns, no pagination.',
+'Show the tool: EXPLAIN (ANALYZE, BUFFERS) before and after — seq scan became index scan.']},
+
+{s:'db',d:'hard',q:'What is an N+1 query and how do you kill it in TypeORM?',a:[
+'50 appointments, then lazily touching .patient on each → 51 queries.',
+'Fix: relations:[\'patient\'] or leftJoinAndSelect. For big fan-out, a batched WHERE id IN (…) beats a join that multiplies rows.',
+'Detection: query logging in staging, or count queries per request in an interceptor.']},
+
+{s:'db',d:'trap',q:'Postgres or MongoDB for this healthcare platform? Pick one.',a:[
+'Pick Postgres and mean it: appointments, payments and prescriptions are relational, transactional and audited. Multi-row ACID, FKs, joins.',
+'Show range: Mongo earns a place for flexible clinical documents, event logs, chat.',
+'The mature close: "one primary store until a workload demands another — polyglot persistence on day one is a tax."']},
+
+{s:'db',d:'hard',q:'Embed or reference in MongoDB? And what actually caused the Evify timeouts?',a:[
+'Embed when the child is bounded and only read with the parent. Reference when it\'s queried independently or unbounded — the 16MB doc limit is real.',
+'Evify story: a collection scan on order/rider lookups with no supporting index, growing until it blew the timeout.',
+'Diagnosis: .explain("executionStats"), COLLSCAN, totalDocsExamined vs nReturned. Fix: compound index matching the query shape + maxTimeMS so slow queries fail fast.']},
+
+{s:'db',d:'hard',q:'Explain your ERoomRent aggregation pipeline.',a:[
+'$match and $sort first so an index is used, then $lookup, $group, $project. $match before $lookup or you join far more than you need.',
+'$facet gives results and total count in one round trip — the paginated-search shape.',
+'Limits worth naming: $lookup isn\'t a real join, 100MB per stage without allowDiskUse. ESR rule: Equality, Sort, Range.']},
+
+{s:'auth',d:'expected',q:'You built auth on Cognito. What did it actually give you?',a:[
+'User Pool = the user directory issuing JWTs. Identity Pool = swaps tokens for temporary AWS credentials. Know the difference — it\'s the standard trap.',
+'Gave: hosted sign-in, MFA (Pinpoint SMS), password policy, token refresh, no password-storage liability.',
+'Your API verifies the JWT against the cached JWKS — signature, iss, aud, exp, token_use. Tradeoffs: lock-in, awkward custom flows via Lambda triggers, cost at millions of MAU.']},
+
+{s:'auth',d:'hard',q:'How do you revoke a JWT before it expires?',a:[
+'You can\'t revoke a stateless JWT — you can only make it useless. Short access token (5–15 min) + rotating refresh token with reuse detection.',
+'For real revocation: a jti/user denylist in Redis checked at the edge, or a tokenVersion on the user for "log out everywhere".',
+'Refresh token in an httpOnly, Secure, SameSite cookie. localStorage is an XSS handover.']},
+
+{s:'auth',d:'hard',q:'Design RBAC for doctors, patients, lab techs, admins. Where does it break?',a:[
+'Roles → permissions checked in a Guard; role in the token, permission mapping server-side.',
+'It breaks at: "a doctor sees a patient record — but only their own patients." That\'s relationship-based, not role-based.',
+'So: RBAC for coarse access + a resource-ownership check on every read. Plus break-glass emergency access that\'s allowed but heavily audited.']},
+
+{s:'auth',d:'trap',q:'What changes when the data is patient health records instead of orders?',a:[
+'Name the India specifics: DPDP Act 2023, and ABDM/ABHA if they go national. Consent is a product feature, not a checkbox.',
+'Immutable audit log of every read — who viewed a record matters as much as who changed it.',
+'Encryption at rest via KMS, field-level for identifiers, PHI redacted at the logger, and no hard deletes — tombstone plus revoke access.']},
+
+{s:'auth',d:'hard',q:'How do you make a booking or payment endpoint idempotent?',a:[
+'Client sends an Idempotency-Key per attempt; server stores key → (status, response) behind a unique constraint and replays the stored response.',
+'Handle the in-flight case — a second request while the first is processing gets 409, not a double charge.',
+'Why it matters here: Indian mobile networks retry hard. At-least-once makes duplicates a certainty, not an edge case.']},
+
+{s:'sys',d:'trap',q:'We are pre-launch with a small team. Do we start with microservices?',a:[
+'No — modular monolith with strict internal boundaries. This is a judgement test.',
+'Why: you don\'t know the domain boundaries yet, and a wrong service split costs far more to undo than a wrong module split.',
+'Then show you can do it anyway: "modules talk through interfaces and an internal event bus, so extracting one later is mechanical." Trigger to split: a different scaling profile or release cadence — notifications, media, ML scoring.']},
+
+{s:'sys',d:'trap',q:'Design a doctor-appointment booking system for 10 million users.',a:[
+'Don\'t draw yet. Clarify: teleconsult vs in-person, read:write ratio, peak concurrency, payment before or after, cancellation policy.',
+'Estimate aloud: 10M users, 2% booking monthly ≈ 200k writes/month — trivial on average, but 50–100× at morning slot release. Reads dominate ~1000:1.',
+'Write path: slot hold with UNIQUE (doctor_id, slot_start) + TTL → payment → confirm, with a saga to release on failure.',
+'Read path: Redis cache on doctor search and availability, read replicas, invalidate on booking. Notifications and analytics go on a queue, never inline.',
+'Close with what you\'d cut for v1: single primary, no sharding, no microservices. Earn the complexity.']},
+
+{s:'sys',d:'hard',q:'Slot release at 8am — 50,000 users hit one doctor in ten seconds. What breaks?',a:[
+'Breaks: connection pool, cache stampede on the availability key, lock contention on hot rows.',
+'Queue the demand and return 202 with a booking-status handle; process at a controlled rate. Single-flight lock on the cache so 50k misses don\'t all hit the DB.',
+'Losers get a clean "gone" from the UNIQUE constraint, never corruption. And say the product answer: staggered release or a virtual waiting room — cheapest scaling is often product design.']},
+
+{s:'sys',d:'hard',q:'SSE vs WebSocket vs polling — pick for a live consultation queue.',a:[
+'SSE: one-way server→client, plain HTTP, auto-reconnect via Last-Event-ID. Perfect for a status feed — that\'s why you replaced polling at Karat.',
+'WebSocket: bidirectional, needed for chat; costs sticky connections and its own scaling story.',
+'Raise unprompted: both hold long-lived connections, so you need Redis pub/sub fan-out across instances and to size ALB idle timeouts.']},
+
+{s:'sys',d:'hard',q:'Two services must update together and one fails halfway.',a:[
+'No 2PC. Saga: local transactions with compensating actions. Book slot → charge → confirm; payment fails, emit a compensation that releases the slot.',
+'Orchestration over choreography for payments — explicit and debuggable.',
+'Pair with the Transactional Outbox: write the event in the same DB transaction, a relay publishes it. At-least-once, so consumers must be idempotent.']},
+
+{s:'sys',d:'hard',q:'How do you get from one Postgres to millions of daily transactions?',a:[
+'Cheapest first: indexes and query fixes → PgBouncer pooling → read replicas → caching → vertical scale → partitioning → functional split → sharding.',
+'Partition appointments by month so old data doesn\'t slow current queries. Move analytics off the transactional DB early.',
+'The line CTOs want: "I\'d measure which of these we actually need rather than pre-build all of them."']},
+
+{s:'code',d:'hard',q:'Write an async pool that runs at most N promises concurrently.',a:[
+'Most likely Node coding question for this role — know it cold.',
+'Keep a set of running promises; when it hits the limit, await Promise.race to free a slot.',
+'Say why: unbounded Promise.all over 10k rows kills your DB pool.'],
+code:"async function pool(items, n, fn) {\n  const out = [], running = new Set();\n  for (const [i, item] of items.entries()) {\n    const p = Promise.resolve(fn(item, i))\n      .then(r => { out[i] = r; running.delete(p); });\n    running.add(p);\n    if (running.size >= n) await Promise.race(running);\n  }\n  await Promise.all(running);\n  return out;\n}"},
+
+{s:'code',d:'hard',q:'Implement retry with exponential backoff and jitter.',a:[
+'Say first: only retry idempotent or idempotency-keyed operations, and never retry 4xx.',
+'Jitter is the point — without it every client retries in lockstep and you re-DDOS yourself.',
+'Cap the delay and the attempts.'],
+code:"const sleep = ms => new Promise(r => setTimeout(r, ms));\nasync function retry(fn, tries = 4, base = 200) {\n  for (let i = 0; ; i++) {\n    try { return await fn(); }\n    catch (e) {\n      if (i >= tries - 1 || e.status < 500) throw e;\n      const d = Math.min(base * 2 ** i, 5000);\n      await sleep(d * (0.5 + Math.random() / 2));\n    }\n  }\n}"},
+
+{s:'code',d:'expected',q:'SQL: doctors with more than 3 completed appointments in the last 30 days, most active first.',a:[
+'WHERE filters rows, HAVING filters groups — say that distinction out loud.',
+'Use an interval, never a hardcoded date.',
+'If pushed on speed: index on (doctor_id, status, created_at).'],
+code:"SELECT d.id, d.name, COUNT(*) AS n\nFROM appointments a\nJOIN doctors d ON d.id = a.doctor_id\nWHERE a.status = 'completed'\n  AND a.created_at >= NOW() - INTERVAL '30 days'\nGROUP BY d.id, d.name\nHAVING COUNT(*) > 3\nORDER BY n DESC;"},
+
+{s:'code',d:'hard',q:'Why is OFFSET pagination bad at scale?',a:[
+'OFFSET 100000 scans and discards 100k rows — linearly slower. It also skips or repeats rows when data shifts between pages.',
+'Keyset pagination uses the index and stays constant-time.',
+'Tradeoff: no jumping to page 50. Fine for feeds.'],
+code:"SELECT * FROM appointments\nWHERE (created_at, id) < ($1, $2)\nORDER BY created_at DESC, id DESC\nLIMIT 20;"},
+
+{s:'fit',d:'expected',q:'Why a stealth startup, onsite, when you have a Senior title at an agency?',a:[
+'Agency vs product: at an agency you hand the codebase over; here you live with your decisions.',
+'Ground floor is the draw — schema, service boundaries, engineering practices. You\'ve inherited those choices, never made them.',
+'Say plainly you\'re fine with onsite and confirm the location. Don\'t leave ambiguity that costs you the offer.']},
+
+{s:'fit',d:'expected',q:'Why healthcare?',a:[
+'Real reason, not a slogan — RxMen gave you actual domain exposure: appointments, patient records, prescriptions.',
+'What makes it technically interesting: correctness and auditability matter in a way they don\'t in e-commerce.',
+'Show you looked: ABDM, fragmented records, the tier-2/3 access gap. One personal line is fine; two is a speech.']},
+
+{s:'fit',d:'trap',q:'Tell me about the worst bug you shipped to production.',a:[
+'Pick a real one with consequences — your Evify auth or order-tracking incidents are natural material.',
+'What broke → blast radius → how you found it → how you stopped the bleeding → what you changed so it can\'t recur.',
+'The last part is the whole answer. Never pick a bug that was someone else\'s fault.']},
+
+{s:'fit',d:'expected',q:'What do you ask them?',a:[
+'"Is the backend a modular monolith today or already split — and what drove that call?"',
+'"What\'s the first module you\'d want me to own end to end?"',
+'"The JD says millions of daily transactions — what\'s the volume today, and is ABDM integration on the roadmap?"',
+'Ask three, not six. Pick the ones whose answers would change your decision.']}
+];
+B.forEach((x,i)=>x.i=i);
+
+const KEY='ayu_v2';let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}};
+const $=id=>document.getElementById(id);
+const el=(t,c,tx)=>{const n=document.createElement(t);if(c)n.className=c;if(tx!=null)n.textContent=tx;return n};
+
+/* ---- answer body built from real DOM nodes ---- */
+function body(x,mine){
+  const f=document.createDocumentFragment();
+  if(mine){const h=el('h4',null,'What you wrote');const p=el('p',null,mine);
+    p.style.cssText='margin:0 0 12px;font-size:14.5px;white-space:pre-wrap;color:var(--muted)';f.append(h,p)}
+  f.append(el('h4',null,'Model answer'));
+  const ul=el('ul');x.a.forEach(t=>ul.append(el('li',null,t)));f.append(ul);
+  if(x.code){const pre=el('pre');pre.append(el('code',null,x.code));f.append(pre)}
+  return f;
+}
+function pct(){let p=0;B.forEach(x=>{const v=ST[x.i];p+=v==='good'?1:v==='shaky'?.5:0});return Math.round(p/B.length*100)}
+function ring(){const s=pct();$('rc').setAttribute('stroke-dashoffset',107-107*s/100);$('rt').textContent=s+'%';
+  const n=B.filter(x=>!ST[x.i]).length;
+  $('crumb').textContent=n?n+' of '+B.length+' left':(s>=80?'ready':'review the reds');}
+
+/* ---- nav ---- */
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.nav button').forEach(x=>x.setAttribute('aria-current',x===b));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.p));
+  scrollTo(0,0);if(b.dataset.p==='drill')drill();});
+$('theme').onclick=()=>{const r=document.documentElement;
+  const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+  r.dataset.theme=dark?'light':'dark';};
+$('reset').onclick=function(){if(this.dataset.a){ST={};save();ring();bank();deck=null;drill();
+  this.dataset.a='';this.textContent='↺';return}
+  this.dataset.a='1';this.textContent='✓?';setTimeout(()=>{this.dataset.a='';this.textContent='↺'},2500)};
+
+/* ---- chips ---- */
+function chips(box,items,cur,cb){box.textContent='';items.forEach(it=>{
+  const b=el('button','chip');b.setAttribute('aria-pressed',cur===it.v);b.append(document.createTextNode(it.l));
+  if(it.n!=null)b.append(el('span','n',it.n));b.onclick=()=>cb(it.v);box.append(b)})}
+
+/* ---- drill ---- */
+let deck=null,dp=0,shown=false,mode='smart',streak=0;
+const rank=x=>({bad:0,shaky:1}[ST[x.i]]??(ST[x.i]?3:2));
+function build(){
+  let d=B.slice();
+  if(mode==='trap')d=d.filter(x=>x.d==='trap');
+  else if(mode==='weak')d=d.filter(x=>['shaky','bad'].includes(ST[x.i]));
+  else if(mode==='new')d=d.filter(x=>!ST[x.i]);
+  else if(SN[mode])d=d.filter(x=>x.s===mode);
+  if(!d.length)d=B.slice();
+  if(mode==='smart')d.sort((a,b)=>rank(a)-rank(b));
+  deck=d;dp=0;shown=false;
+}
+function drill(){
+  if(!deck)build();
+  chips($('dchips'),[{l:'Smart',v:'smart'},{l:'Traps only',v:'trap',n:B.filter(x=>x.d==='trap').length},
+    {l:'Needs work',v:'weak',n:B.filter(x=>['shaky','bad'].includes(ST[x.i])).length},
+    {l:'Unrated',v:'new',n:B.filter(x=>!ST[x.i]).length}].concat(SECS.map(([v,l])=>({l,v}))),
+    mode,v=>{mode=v;build();drill()});
+  const x=deck[dp],c=$('dcard'),act=$('dact');
+  $('dpos').textContent=(dp+1)+'/'+deck.length;
+  $('dbar').style.width=((dp+1)/deck.length*100)+'%';
+  $('streak').textContent=streak>1?streak+' streak':'';
+  c.dataset.d=x.d;c.textContent='';
+  const lbl=el('div','lbl');lbl.append(SN[x.s]+' · ');
+  const em=el('em',null,x.d);em.style.color='var(--'+(x.d==='trap'?'crit':x.d==='hard'?'warn':'accent')+')';
+  lbl.append(em);c.append(lbl,el('div','qq',x.q));
+  if(!shown){
+    const ta=el('textarea','mine');ta.placeholder='Say your answer out loud, or type the key points…';
+    ta.value=(ST.m||{})[x.i]||'';
+    ta.oninput=()=>{ST.m=ST.m||{};ST.m[x.i]=ta.value;save()};
+    c.append(ta);
+  }else{
+    const w=el('div','ans');w.append(body(x,(ST.m||{})[x.i]));c.append(w);
+  }
+  act.textContent='';
+  if(!shown){
+    const r=el('button','big','Show model answer');r.onclick=()=>{shown=true;drill()};
+    const p=el('button',null,'←');p.onclick=()=>step(-1);p.style.flex='0 0 56px';
+    act.append(p,r);
+  }else{
+    [['g','Got it','good'],['s','Shaky','shaky'],['b','No idea','bad']].forEach(([cl,t,v])=>{
+      const b=el('button',cl,t);
+      if(ST[x.i]===v)b.style.outline='2px solid currentColor';
+      b.onclick=()=>{ST[x.i]=v;save();streak=v==='good'?streak+1:0;ring();bank();step(1)};
+      act.append(b)});
+  }
+}
+function step(d){dp=(dp+d+deck.length)%deck.length;shown=false;drill()}
+let sx=0,sy=0;
+$('dcard').addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+$('dcard').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.6)step(dx<0?1:-1)},{passive:true});
+addEventListener('keydown',e=>{
+  if(!$('p-drill').classList.contains('on')||/INPUT|TEXTAREA/.test(e.target.tagName))return;
+  if(e.key===' '){e.preventDefault();shown=true;drill()}
+  else if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1);
+  else if(shown&&'123'.includes(e.key)){const v=['good','shaky','bad'][e.key-1];
+    ST[deck[dp].i]=v;save();streak=v==='good'?streak+1:0;ring();bank();step(1)}});
+
+/* ---- bank ---- */
+let fs='all',fq='';
+function bank(){
+  chips($('bchips'),[{l:'All',v:'all',n:B.length},{l:'Traps',v:'trap'},{l:'Needs work',v:'weak'}]
+    .concat(SECS.map(([v,l])=>({l,v}))),fs,v=>{fs=v;bank()});
+  const L=$('list');L.textContent='';
+  const hit=B.filter(x=>{
+    if(fs==='trap'&&x.d!=='trap')return false;
+    if(fs==='weak'&&!['shaky','bad'].includes(ST[x.i]))return false;
+    if(SN[fs]&&x.s!==fs)return false;
+    if(fq&&!(x.q+' '+x.a.join(' ')).toLowerCase().includes(fq))return false;
+    return true});
+  if(!hit.length){L.append(el('p','empty','Nothing matches.'));return}
+  SECS.forEach(([id,name])=>{
+    const q=hit.filter(x=>x.s===id);if(!q.length)return;
+    const h=el('div','sec-h');h.append(el('h2',null,name),el('span',null,q.length+''));L.append(h);
+    q.forEach(x=>{
+      const a=el('article','q');a.dataset.d=x.d;a.dataset.st=ST[x.i]||'';
+      const btn=el('button','qh');btn.append(el('span','dot'),el('span','t',x.q),el('span',null,'›'));
+      const bd=el('div','qb');bd.hidden=true;bd.append(body(x,(ST.m||{})[x.i]));
+      btn.onclick=()=>{bd.hidden=!bd.hidden};
+      a.append(btn,bd);L.append(a)})});
+}
+$('s').oninput=e=>{fq=e.target.value.toLowerCase().trim();bank()};
+
+/* ---- mock ---- */
+const PLAN=[[0,5,'Intro & walkthrough'],[5,13,'Backend depth · the attack'],[13,21,'Node.js'],[21,30,'Postgres & Mongo'],
+[30,37,'Auth & health data'],[37,48,'System design'],[48,54,'Coding'],[54,58,'Fit'],[58,60,'Your questions']];
+let left=3600,on=false,tk=null,end=0;
+function clock(){const s=Math.abs(left),neg=left<0;
+  const c=$('clock');c.textContent=(neg?'-':'')+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+  c.classList.toggle('hot',neg||left<300);
+  const e=3600-left,box=$('slots');box.textContent='';
+  PLAN.forEach(([a,b,n])=>{const d=el('div','slot '+(e>=b*60?'past':e>=a*60?'now':''));
+    d.append(el('span','mm',a+'–'+b+'′'),el('span','nm',n));box.append(d)})}
+$('tgo').onclick=function(){if(on){on=false;clearInterval(tk);this.textContent='Resume';return}
+  on=true;this.textContent='Pause';end=Date.now()+left*1000;
+  tk=setInterval(()=>{left=Math.round((end-Date.now())/1000);clock()},250)};
+$('trs').onclick=()=>{on=false;clearInterval(tk);left=3600;$('tgo').textContent='Start';clock()};
+
+bank();ring();clock();
+</script>
+</body>
+</html>
