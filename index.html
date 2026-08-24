@@ -154,7 +154,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
     <p>37 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
   </div>
   <div class="card"><h3>Your 60-second opener</h3>
-    <p class="pitch">"Four years, mostly backend. Node/Express + MongoDB services at Kangaroo and Glazer — a matching engine, aggregation pipelines, AWS Rekognition and Lambda for a 100-rider fleet. At Antino I led the Express → NestJS migration on RxMen, a healthcare platform, and designed the Postgres schemas behind appointments, payments and patient records. I also own auth — Cognito, JWT, RBAC — on a SEBI-regulated fintech product. I have real frontend range, but backend and AWS are where I go deep."</p></div>
+    <p class="pitch">"I've been building for four years, mostly on the backend. At Kangaroo I built Node and MongoDB services — a room-matching engine and the aggregation queries behind search. At Glazer I built the backend for a delivery app, including AWS Rekognition, S3, Lambda and SNS for a fleet of about 100 riders. At Antino I moved RxMen, a healthcare product, from Express to NestJS and designed the Postgres tables for appointments, payments and patient records. On the fintech product I own login and permissions using Cognito. I do a fair amount of frontend too, but backend and AWS is where I'm strongest."</p></div>
   <div class="card"><h3>Numbers to have loaded</h3><div class="g2">
     <div class="stat"><b>5+</b><span>Postgres modules, RxMen</span></div>
     <div class="stat"><b>10k+</b><span>req/month — own the smallness</span></div>
@@ -162,9 +162,9 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
     <div class="stat"><b>100+</b><span>riders, Rekognition punch-in</span></div>
   </div></div>
   <div class="card"><h3>Three rules for the room</h3><ul>
-    <li><b>Never lead with React.</b> Anchor every answer to RxMen (NestJS/Postgres), Evify or ERoomRent (Mongo/AWS).</li>
-    <li><b>Never say "microservices from day one."</b> Modular monolith, split when a seam hurts.</li>
-    <li><b>Never defend a number you didn't measure.</b> Say how you'd measure it now. Fuzzy is forgiven; bluffing isn't.</li>
+    <li><b>Don't start with React.</b> Start every answer from RxMen, Evify or ERoomRent — the backend work.</li>
+    <li><b>Don't say "microservices from day one."</b> Say one codebase, kept tidy, split later when something forces it.</li>
+    <li><b>Don't defend a number you didn't measure.</b> Say how you'd measure it now instead. Being vague is fine. Making something up is not.</li>
   </ul></div>
   <div class="card"><h3>Two-evening plan</h3><ul>
     <li><b>Tonight:</b> Drill → "Traps only". Nine questions. These decide the interview.</li>
@@ -228,227 +228,282 @@ const SECS=[['open','Opening & the attack'],['node','Node.js'],['db','Postgres &
 const SN=Object.fromEntries(SECS);
 
 const B=[
-{s:'open',d:'trap',q:'Your résumé headline says React, Next.js, Svelte. This role is backend-mandatory. Why are you here?',a:[
-'Reframe the ordering, not the skill set: "that headline reflects my latest project, not my weight class. I started backend and never left it."',
-'Get concrete in ten seconds: NestJS migration, TypeORM schema design, Mongo aggregation pipelines, Cognito flows, Lambda crons.',
-'Offer proof: "ask me anything about the RxMen data model or how I killed the query timeouts at Evify."']},
+{s:'open',d:'trap',q:'Your résumé headline says React, Next.js, Svelte. This role is backend-mandatory. Why are you here?',
+nk:"Don't argue. Just say: \"The headline is about my most recent project. Let me tell you what I actually build on the backend.\" Then talk about RxMen.",a:[
+'Don\'t get defensive. Say the headline is about your last project, not your main skill.',
+'Tell them you started on the backend and never stopped: NestJS, Postgres schemas, Mongo pipelines, Cognito, Lambda jobs.',
+'Then invite them to test you: "Ask me anything about the RxMen database design, or how I fixed the slow queries at Evify."']},
 
-{s:'open',d:'expected',q:'Walk me through your background in two minutes.',a:[
-'Kangaroo (18 mo) → Node/Express/Mongo, matching engine + aggregation pipelines.',
-'Glazer/Evify → Node backend, Mongo schemas, Rekognition + S3 + Lambda + SNS, 100-rider fleet.',
-'Antino (2 yr, promoted) → RxMen: Express→NestJS, Postgres schemas for 5 modules. Karat: Cognito auth + Next.js app.',
-'Land on: "backend and AWS are where I go deep."']},
+{s:'open',d:'expected',q:'Walk me through your background in two minutes.',
+nk:"Practise this out loud twice tonight. It's the one answer you should never have to think about.",a:[
+'Keep it to four sentences, one per job. Don\'t list technologies, say what you built.',
+'Kangaroo, 18 months: Node, Express and MongoDB. Built a room-matching engine and the aggregation queries behind search.',
+'Glazer: Node backend for a delivery app. MongoDB schemas, plus AWS Rekognition, S3, Lambda and SNS for a fleet of 100 riders.',
+'Antino, 2 years, promoted to Senior: moved RxMen from Express to NestJS and designed the Postgres tables for appointments, payments and patient records. On the fintech product I owned login and permissions using Cognito.',
+'Finish with one line: "Backend and AWS is where I am strongest."']},
 
-{s:'open',d:'trap',q:'"10k+ monthly requests" is one request every four minutes. Why is that on your résumé?',a:[
-'Own it, never inflate: "that\'s the honest number for that product\'s stage — a CloudWatch request count, not an estimate."',
-'Show you know what changes: "at 10k/month, pooling and indexing are optional. At millions/day they are the whole job."',
-'Then prove it anyway: "here\'s what I\'d do differently at 1000× — pooling, read replicas, caching, partitioning."']},
+{s:'open',d:'trap',q:'"10k+ monthly requests" is one request every four minutes. Why is that on your résumé?',
+nk:"Just agree with them. \"You're right, it's small.\" Then talk about what you'd do at bigger numbers. Trying to defend it is the only wrong move.",a:[
+'Agree with them. Say: "That\'s a real number from CloudWatch, and yes, it\'s a small product."',
+'Then show you understand why it matters: "At that size you can get away with a lot. Nothing forces you to add caching or connection pooling. At millions a day, those things are the job."',
+'Then prove you know what changes: connection pooling, read replicas, caching, and splitting big tables by month.',
+'They are checking whether you can be honest about your own numbers. Say the true thing and you pass.']},
 
-{s:'open',d:'trap',q:'Which of this did you personally build, and which did your team build?',a:[
-'Volunteer the split before they dig — credibility is won here.',
-'Yours: Cognito auth flows, NestJS migration, Postgres schema design, Mongo aggregation pipelines, Evify AWS integrations.',
-'Shared: Karat architecture decisions and the fintech backend services. Saying "that part wasn\'t mine" once buys trust for everything else.']},
+{s:'open',d:'trap',q:'Pick any number on your résumé and tell me exactly how you measured it.',
+nk:"If you didn't really measure something, say so straight away: \"That was a rough before-and-after, not a proper measurement.\" Then say how you'd do it properly. That answer is fine. Making up a tool is not.",a:[
+'Only name a tool you actually used. If a number was a rough comparison, say that plainly and then say how you would measure it properly today.',
+'The 30% page load: Lighthouse and Chrome DevTools for load timings, React DevTools Profiler to find components re-rendering for no reason, and PostHog to see what real users experienced instead of just your laptop.',
+'The 20% API speed-up: Postman to time the same endpoints before and after, EXPLAIN ANALYZE in Postgres to see why a query was slow, and CloudWatch to check the slowest 5% of requests in production.',
+'The 10k requests: that one is just a counter in CloudWatch, so say it is a count, not an estimate.',
+'The Mongo work: .explain() to see how many documents were being scanned, and the slow query profiler.',
+'If they push on load testing, be honest: "I haven\'t run a proper load test. I\'d use k6 for that."']},
 
-{s:'node',d:'expected',nk:"Give the phase names even if you cannot explain each one, then pivot to the consequence you do understand: a synchronous heavy function blocks every request on that process. The practical grasp is worth more than reciting six phases.",
- q:'Explain the Node event loop.',a:[
-'Phases: timers → pending callbacks → poll → check (setImmediate) → close. Microtasks drain between every phase — nextTick first, then promises.',
-'poll is where I/O callbacks run and where the loop blocks when nothing else is pending.',
-'Consequence that matters: one synchronous heavy function stalls every request on that process.']},
+{s:'open',d:'trap',q:'Which of this did you personally build, and which did your team build?',
+nk:"Answer this before they have to ask twice. Saying \"that part wasn't mine\" once makes everything else you say believable.",a:[
+'Say the split yourself, before they dig. It makes everything else you claim believable.',
+'Yours: the Cognito login and permissions, the NestJS migration, the Postgres table design, the Mongo aggregation queries, and the AWS work at Evify.',
+'Shared: the overall architecture choices on the fintech product, and the backend services there.',
+'One honest "that part wasn\'t mine" buys you trust for the rest of the hour.']},
 
-{s:'node',d:'hard',nk:"Correct the premise first — that alone scores. If the threadpool detail escapes you, go straight to the answer that matters operationally: run N containers behind a load balancer and push CPU work onto a queue.",
- q:'Node is single-threaded. How do you use a 16-core box, and where does CPU-heavy work go?',a:[
-'Correct the premise: JS execution is single-threaded; libuv runs a threadpool (default 4) for fs, DNS, crypto, zlib.',
-'Scale out: cluster/PM2, or N containers behind a load balancer — the latter on ECS/K8s.',
-'CPU-bound: worker_threads, or better, off the request path entirely onto a queue. PDF and report generation is exactly that.']},
+{s:'node',d:'expected',q:'Explain the Node event loop.',
+nk:"If the phase names go, skip them. Say the part that actually matters: Node handles one thing at a time, so any slow synchronous code freezes every user on that server.",a:[
+'Node runs one thing at a time. The event loop is what decides which thing runs next.',
+'It goes round in phases: timers first, then I/O callbacks, then setImmediate callbacks, then cleanup. Then it starts again.',
+'Between every phase it clears the promise queue, so promise callbacks and process.nextTick jump ahead of timers.',
+'The part that matters in practice: if one function takes 200ms of pure CPU, every other request on that server waits 200ms. That\'s the whole reason you care.']},
 
-{s:'node',d:'trap',q:'What\'s wrong with items.forEach(async i => { await save(i) })?',a:[
-'forEach ignores the returned promise — nothing is awaited and rejections vanish unhandled.',
-'Sequential: for…of with await. Parallel: Promise.all(items.map(save)) — but unbounded parallelism exhausts the DB pool.',
-'The answer that sounds experienced: bound it.'],
+{s:'node',d:'hard',q:'Node is single-threaded. How do you use a 16-core box, and where does CPU-heavy work go?',
+nk:"Even if the details go, give the practical answer: run several copies of the app behind a load balancer, and move heavy jobs onto a queue. That's what you'd actually do.",a:[
+'Correct them gently first: only your JavaScript runs on one thread. Node uses a pool of background threads for file reads, DNS and crypto.',
+'To use all the cores, run several copies of the app. Either the cluster module, PM2, or just several containers behind a load balancer. The last one is what you would do on AWS.',
+'For heavy CPU work inside the app, use worker_threads so it doesn\'t block everything else.',
+'The better answer: get it out of the request entirely. Put the job on a queue and let a separate worker do it. Generating PDFs or processing images should never happen while a user waits.']},
+
+{s:'node',d:'trap',q:'What\'s wrong with items.forEach(async i => { await save(i) })?',
+nk:"If you can't see it immediately, read it out loud slowly. The clue is that forEach doesn't wait for anything.",a:[
+'forEach doesn\'t wait. It fires off all the calls and moves on straight away, so nothing is actually awaited.',
+'Worse, if one of them fails, the error goes nowhere. You get an unhandled rejection and no idea why.',
+'To run them one at a time, use a normal for...of loop with await inside it.',
+'To run them together, use Promise.all with map. But be careful: if there are 10,000 items you just opened 10,000 database connections.',
+'The answer that sounds like experience: do them in batches.'],
 code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  await Promise.all(items.slice(i, i + limit).map(save));\n}"},
 
-{s:'node',d:'hard',nk:"Anchor on the one rule you will not get wrong: crash and restart on an unhandled rejection, never keep serving from a corrupted process. Then say you would check whether the framework catches async errors before relying on it.",
- q:'How do you handle errors in async Node? What about uncaughtException?',a:[
-'Express 4 does not catch async rejections — wrap handlers or they never reach error middleware. NestJS ExceptionFilter does it for you.',
-'One centralised handler mapping domain errors to HTTP codes.',
-'unhandledRejection/uncaughtException: log with context, then exit and let the orchestrator restart. Never serve from a corrupted process.']},
+{s:'node',d:'hard',q:'How do you handle errors in async Node? What about uncaughtException?',
+nk:"Stick to the one rule you'll never get wrong: if something unexpected crashes the app, let it crash and restart. Don't keep serving from a broken process.",a:[
+'The trap in Express 4: if an async route handler throws, Express never sees it. You have to wrap it or the error just disappears. NestJS handles this for you.',
+'Have one place that turns errors into responses, so you\'re not writing try/catch in every route.',
+'For unhandledRejection and uncaughtException: log everything you can, then let the process exit and restart.',
+'Say why: once you hit an error you didn\'t expect, you don\'t know what state the app is in. Serving more requests from it is worse than restarting.']},
 
-{s:'node',d:'hard',q:'You migrated RxMen from Express to NestJS. Why, and what did it cost?',a:[
-'Before: fat controllers, business logic tangled with HTTP, nothing unit-testable.',
-'After: enforced module boundaries and DI, so services test with mocked repositories. Guards for authz, Pipes for DTO validation, Interceptors for logging.',
-'Volunteer the cost: more boilerplate, steeper curve, and the migration had to be incremental — strangler-fig, route group by route group.']},
+{s:'node',d:'hard',q:'You migrated RxMen from Express to NestJS. Why, and what did it cost?',
+nk:"If you can't recall the details, describe the mess it fixed. \"Everything was in the controllers and we couldn't test any of it\" is a real answer.",a:[
+'Describe what was wrong first: all the logic sat inside the route handlers, mixed in with request and response objects. You couldn\'t test any of it without starting a server.',
+'NestJS forced the code into modules and let you inject dependencies. That meant you could test a service on its own with a fake database.',
+'It also gave you one place each for permissions checks, input validation and logging, instead of repeating them.',
+'Say the downside too, unprompted: more boilerplate, and the team had to learn it. You did it gradually, a few routes at a time, with both running side by side.']},
 
-{s:'db',d:'trap',nk:"If nothing comes, say the honest general form: \"application-level check-then-insert is a race, so correctness has to live in the database.\" That sentence alone gets you most of the credit, then let them lead you to the unique constraint.",
- q:'Two patients book the same slot in the same millisecond. What does your code do?',a:[
-'Best answer, say it first: a UNIQUE constraint on (doctor_id, slot_start). One insert wins; the other gets 23505, which you translate into "slot just taken".',
-'Say explicitly that an application-level check-then-insert is a race — that\'s the signal they\'re looking for.',
-'Alternatives: SELECT … FOR UPDATE inside a transaction, or SERIALIZABLE with retry. A Redis lock is an optimisation; the DB constraint is truth.']},
+{s:'db',d:'trap',q:'Two patients book the same slot in the same millisecond. What does your code do?',
+nk:"If nothing comes to mind, say this one sentence: \"Checking first and then inserting is a race, so the database has to be the one that stops it.\" That alone gets you most of the marks.",a:[
+'Put a unique constraint on the doctor and slot time. Then the database itself refuses the second booking.',
+'One insert works, the other gets an error. You catch that error and tell the second user the slot is gone.',
+'Say clearly why checking first doesn\'t work: between your check and your insert, the other request can slip in. That gap is the bug.',
+'If they want alternatives: lock the row inside a transaction, or use a Redis lock. But say the database constraint is the one you actually trust.']},
 
-{s:'db',d:'expected',q:'Walk me through the Postgres schema you designed for RxMen.',a:[
-'Tables: patients, doctors, availability/slots, appointments, payments, prescriptions.',
-'Correctness lives in constraints: FKs, UNIQUE (doctor_id, slot_start), status as an enum.',
-'Indexes with reasons: (doctor_id, slot_start) for availability, (patient_id, created_at DESC) for history. Soft-delete + audit columns — healthcare never hard-deletes.']},
+{s:'db',d:'expected',q:'Walk me through the Postgres schema you designed for RxMen.',
+nk:"Draw it if you can. Even a rough box-and-arrow sketch is easier to talk through than describing tables out loud.",a:[
+'Tables: patients, doctors, available slots, appointments, payments, prescriptions.',
+'Talk about the rules, not just the columns. Foreign keys so you can\'t book a doctor who doesn\'t exist. A unique rule on doctor plus slot time so nobody double-books. Status as a fixed list, not free text.',
+'Mention two indexes and why: one on doctor and slot time for showing availability, one on patient and date for showing their history.',
+'Add this: in healthcare you don\'t delete records. You mark them inactive and keep a log of who changed what.']},
 
-{s:'db',d:'hard',nk:"Say the principle out loud and derive it: equality columns first, then the column you sort by. If you are unsure of the exact order, reason through it in front of them — that is the skill being tested.",
- q:'WHERE doctor_id=$1 AND status=$2 ORDER BY slot_start — design the index.',a:[
-'(doctor_id, status, slot_start): equality columns first, then the ORDER BY column so the sort is free.',
-'Leftmost-prefix — it serves doctor_id alone, but never status alone.',
-'If you always want one status, a partial index WHERE status=\'booked\' is smaller. Cost to name: every index slows writes.']},
+{s:'db',d:'hard',q:'WHERE doctor_id=$1 AND status=$2 ORDER BY slot_start — design the index.',
+nk:"Reason it out loud instead of guessing. \"The two things I'm matching exactly go first, then the thing I'm sorting by.\" Working it out in front of them is the point.",a:[
+'Index on doctor_id, then status, then slot_start.',
+'The rule: columns you match exactly go first, then the column you sort by. That way the database doesn\'t have to sort anything afterwards.',
+'Mention that this index also helps a query on doctor_id alone, but not one on status alone. It only works left to right.',
+'Say the cost too: every index makes writes slower and takes disk space, so you add them for a reason.']},
 
-{s:'db',d:'hard',q:'How did you cut RxMen response time ~20%? Measured with what?',a:[
-'Structure it: measured → found → fixed → re-measured. Name the tool at each step or the number sounds invented.',
-'Endpoint timing: Postman Collection Runner over a fixed set of requests, before and after. A NestJS interceptor logging duration per route gives you the same thing continuously.',
-'Query level: EXPLAIN (ANALYZE, BUFFERS) in psql — seq scan became index scan. pg_stat_statements ranks the slowest queries by total time, which is how you find what to fix first.',
-'Production view: CloudWatch p95/p99 latency per endpoint, not averages — averages hide the tail.',
-'Real causes you found: N+1 from TypeORM lazy relations, a missing composite index, SELECT * pulling unused columns.']},
+{s:'db',d:'hard',q:'How did you cut RxMen response time ~20%? Measured with what?',
+nk:"If you didn't measure it properly, say so and move to how you'd do it now. That's a normal answer. A made-up tool is not.",a:[
+'Tell it as a sequence: measured it, found the cause, fixed it, measured again.',
+'For timing the endpoints: Postman running the same set of requests before and after. In production, CloudWatch, and look at the slowest 5% rather than the average.',
+'For finding the slow query: EXPLAIN ANALYZE in Postgres. It tells you whether it read the whole table or used an index.',
+'What was actually wrong: the ORM was fetching related rows one at a time, an index was missing, and you were selecting columns you never used.']},
 
-{s:'open',d:'trap',q:'Pick any number on your résumé and tell me exactly how you measured it.',a:[
-'Only claim the tool you actually used. If a number was informal, say "that was a before/after on the same profile, not instrumented — here\'s how I\'d measure it properly now." That answer survives; a bluffed tool does not.',
-'~30% page load (Karat): Lighthouse and the Chrome DevTools Performance panel for LCP/TTFB, React DevTools Profiler to find the redundant re-renders, DevTools Network waterfall to prove the API batching helped. PostHog for real-user web vitals rather than your laptop.',
-'~20% API response (RxMen): Postman Collection Runner for repeatable endpoint timing, EXPLAIN (ANALYZE, BUFFERS) and pg_stat_statements at the query level, CloudWatch p95/p99 in production.',
-'10k+ monthly requests: CloudWatch / API Gateway request-count metrics — that\'s a counter, not an estimate, so say so plainly.',
-'Evify timeouts and ERoomRent lookups: .explain("executionStats") for docsExamined vs nReturned, the Mongo profiler for slow ops, Atlas Performance Advisor for index suggestions.',
-'If they push further: "for load I\'d use k6 or autocannon — I haven\'t run a formal load test on these, which is exactly the gap I want to close at scale."']},
+{s:'db',d:'hard',q:'What is an N+1 query and how do you kill it in TypeORM?',
+nk:"If the TypeORM syntax goes, just describe the problem clearly: one query for the list, then another query for every single row. Naming it properly gets you most of the credit.",a:[
+'You fetch 50 appointments with one query. Then for each one you touch appointment.patient, and that fires another query. So 51 queries instead of one.',
+'In TypeORM you fix it by telling it to fetch the related data at the same time, using relations or a join.',
+'If the related list is huge, a join can blow up the number of rows. Then it\'s better to do one extra query with WHERE id IN (...).',
+'How you catch it: turn on query logging in staging and count the queries per request. It\'s obvious once you look.']},
 
-{s:'db',d:'hard',nk:"If the ORM specifics go, define the problem precisely — one query for the list, then one per row — and say the fix is to fetch the related rows in a single query. Naming it correctly is most of the credit.",
- q:'What is an N+1 query and how do you kill it in TypeORM?',a:[
-'50 appointments, then lazily touching .patient on each → 51 queries.',
-'Fix: relations:[\'patient\'] or leftJoinAndSelect. For big fan-out, a batched WHERE id IN (…) beats a join that multiplies rows.',
-'Detection: query logging in staging, or count queries per request in an interceptor.']},
+{s:'db',d:'trap',q:'Postgres or MongoDB for this healthcare platform? Pick one.',
+nk:"Pick Postgres and give one reason. Refusing to choose is the only bad answer here.",a:[
+'Pick Postgres, and commit to it. Refusing to choose is the thing they\'re testing for.',
+'Reason: appointments, payments and prescriptions all relate to each other, and you need them to be correct. Postgres gives you transactions across tables, foreign keys and proper joins.',
+'Show you\'re not dogmatic: Mongo is a good fit for clinical notes where every document is a different shape, or for logs and chat.',
+'Then say the grown-up bit: "I\'d use one database until something genuinely needs a second one. Running two from day one is just extra work."']},
 
-{s:'db',d:'trap',q:'Postgres or MongoDB for this healthcare platform? Pick one.',a:[
-'Pick Postgres and mean it: appointments, payments and prescriptions are relational, transactional and audited. Multi-row ACID, FKs, joins.',
-'Show range: Mongo earns a place for flexible clinical documents, event logs, chat.',
-'The mature close: "one primary store until a workload demands another — polyglot persistence on day one is a tax."']},
+{s:'db',d:'hard',q:'Embed or reference in MongoDB? And what actually caused the Evify timeouts?',
+nk:"If the Evify details are hazy, describe the shape of it: a query with no index, on a collection that kept growing, until it eventually got too slow.",a:[
+'Embed when the smaller thing is only ever read with the parent and won\'t grow forever. Items inside an order, for example.',
+'Reference when you need to query it on its own, or when it keeps growing. A document has a 16MB limit and location history will hit it.',
+'The Evify story: a query on orders had no index, so Mongo was reading the whole collection. Fine at first, then the collection grew and it started timing out.',
+'How you found it: .explain() showed it was scanning every document instead of using an index. The fix was an index matching the query. You also added a max time on queries so a slow one fails fast instead of piling up.']},
 
-{s:'db',d:'hard',q:'Embed or reference in MongoDB? And what actually caused the Evify timeouts?',a:[
-'Embed when the child is bounded and only read with the parent. Reference when it\'s queried independently or unbounded — the 16MB doc limit is real.',
-'Evify story: a collection scan on order/rider lookups with no supporting index, growing until it blew the timeout.',
-'Diagnosis: .explain("executionStats"), COLLSCAN, totalDocsExamined vs nReturned. Fix: compound index matching the query shape + maxTimeMS so slow queries fail fast.']},
+{s:'db',d:'hard',q:'Explain your ERoomRent aggregation pipeline.',
+nk:"If the stage order goes, fall back to the principle: filter as early as you can, so everything after it has less work to do.",a:[
+'Put $match and $sort first, so an index can be used and everything after works on fewer documents.',
+'Never join before filtering. If you $lookup first, you join thousands of rows you were about to throw away.',
+'If you need results and a total count together for pagination, $facet does both in one trip.',
+'Be honest about the limits: $lookup isn\'t a real join and gets slow, and each stage has a memory cap unless you allow disk use.']},
 
-{s:'db',d:'hard',nk:"If the stage order goes, fall back to the rule: filter as early as possible so the index does the work and later stages see fewer documents. That principle covers most of what they are checking.",
- q:'Explain your ERoomRent aggregation pipeline.',a:[
-'$match and $sort first so an index is used, then $lookup, $group, $project. $match before $lookup or you join far more than you need.',
-'$facet gives results and total count in one round trip — the paginated-search shape.',
-'Limits worth naming: $lookup isn\'t a real join, 100MB per stage without allowDiskUse. ESR rule: Equality, Sort, Range.']},
+{s:'auth',d:'expected',q:'You built auth on Cognito. What did it actually give you?',
+nk:"If the pool distinction goes, say what it did for you: it handled sign-up, login, MFA and password storage, and gave you a token your API could check.",a:[
+'Know the difference, they will ask: a User Pool holds your users and gives out tokens. An Identity Pool swaps those tokens for temporary AWS access. Most apps only need the first.',
+'What it saved you: sign-up and login screens, SMS two-factor, password rules, token refresh, and never storing passwords yourself.',
+'How your API checks a token: it fetches Cognito\'s public keys once, caches them, and verifies the signature, who issued it, who it\'s for, and whether it\'s expired.',
+'Say the downsides yourself: you\'re tied to AWS, custom login flows are awkward, and moving users out later is painful.']},
 
-{s:'auth',d:'expected',q:'You built auth on Cognito. What did it actually give you?',a:[
-'User Pool = the user directory issuing JWTs. Identity Pool = swaps tokens for temporary AWS credentials. Know the difference — it\'s the standard trap.',
-'Gave: hosted sign-in, MFA (Pinpoint SMS), password policy, token refresh, no password-storage liability.',
-'Your API verifies the JWT against the cached JWKS — signature, iss, aud, exp, token_use. Tradeoffs: lock-in, awkward custom flows via Lambda triggers, cost at millions of MAU.']},
+{s:'auth',d:'hard',q:'How do you revoke a JWT before it expires?',
+nk:"Start with the honest bit: you can't really revoke one. Say that and you're already most of the way there.",a:[
+'Start with the truth: you can\'t. A JWT is valid until it expires because the server doesn\'t store it anywhere.',
+'So you work around it. Keep the access token short, 5 to 15 minutes, and use a longer refresh token to get new ones.',
+'If you genuinely need instant revocation, keep a blocklist in Redis and check it. But that means you\'re no longer stateless, so only do it where it matters.',
+'For "log me out everywhere", store a number on the user and bump it. Any token issued before that number is rejected.',
+'On storage: put the refresh token in an httpOnly cookie. In localStorage, any XSS bug hands it straight to an attacker.']},
 
-{s:'auth',d:'hard',nk:"Start from the true statement: a stateless token cannot be revoked, only expired or checked against something stateful. If you cannot recall the patterns, say short TTLs are the cheap answer and a denylist is the expensive one.",
- q:'How do you revoke a JWT before it expires?',a:[
-'You can\'t revoke a stateless JWT — you can only make it useless. Short access token (5–15 min) + rotating refresh token with reuse detection.',
-'For real revocation: a jti/user denylist in Redis checked at the edge, or a tokenVersion on the user for "log out everywhere".',
-'Refresh token in an httpOnly, Secure, SameSite cookie. localStorage is an XSS handover.']},
+{s:'auth',d:'hard',q:'Design RBAC for doctors, patients, lab techs, admins. Where does it break?',
+nk:"If the design won't come, jump straight to where it breaks: a doctor should only see their own patients, and roles alone can't express that. Naming the gap is the answer they want.",a:[
+'The basic version: each user has a role, each role has a list of what it can do, and a check runs before the route.',
+'Keep the permission list on the server. The token says who they are, not what they\'re allowed to do.',
+'Now the real point, and say it yourself: roles alone don\'t work here. "A doctor can view patient records" is too broad. It should be their own patients only.',
+'So you need two checks: the role for the general permission, and an ownership check on the actual record.',
+'Nice extra: emergency access where a doctor can override in a crisis, but it gets logged loudly and reviewed.']},
 
-{s:'auth',d:'hard',nk:"If the design will not come, jump to where it breaks — \"a doctor should only see their own patients\" — because naming the limitation of RBAC is the actual insight they want.",
- q:'Design RBAC for doctors, patients, lab techs, admins. Where does it break?',a:[
-'Roles → permissions checked in a Guard; role in the token, permission mapping server-side.',
-'It breaks at: "a doctor sees a patient record — but only their own patients." That\'s relationship-based, not role-based.',
-'So: RBAC for coarse access + a resource-ownership check on every read. Plus break-glass emergency access that\'s allowed but heavily audited.']},
+{s:'auth',d:'trap',q:'What changes when the data is patient health records instead of orders?',
+nk:"Don't invent law names. Say what you'd enforce anyway: log every view, encrypt it, keep it out of logs, never hard delete. Then say you'd take legal advice on the specifics.",a:[
+'The big one: you log every time someone reads a record, not just when they change it. Who looked at a patient file is a real question in healthcare.',
+'Consent is a feature you build, not a checkbox. Patients decide who sees what, and that has to be stored and checked.',
+'Encrypt it at rest and in transit, and never let patient data end up in your application logs. Strip it before logging.',
+'You generally can\'t delete medical records. "Delete" means marking it gone and cutting off access, while the record stays.',
+'On Indian rules, mention the DPDP Act and ABDM if they come up, but don\'t bluff detail. Say you\'d take legal guidance on specifics.']},
 
-{s:'auth',d:'trap',nk:"Do not invent regulation names. Say what you would enforce regardless — audit every read, encrypt at rest, never log PHI, never hard-delete — and say you would take legal guidance on the specific Indian requirements.",
- q:'What changes when the data is patient health records instead of orders?',a:[
-'Name the India specifics: DPDP Act 2023, and ABDM/ABHA if they go national. Consent is a product feature, not a checkbox.',
-'Immutable audit log of every read — who viewed a record matters as much as who changed it.',
-'Encryption at rest via KMS, field-level for identifiers, PHI redacted at the logger, and no hard deletes — tombstone plus revoke access.']},
+{s:'auth',d:'hard',q:'How do you make a booking or payment endpoint idempotent?',
+nk:"Forget the word. Just describe what you want: if the same request arrives twice, the customer gets charged once. Then explain how you'd make that true.",a:[
+'Describe the goal in plain terms: if the same request arrives twice, it should only take effect once.',
+'How: the client generates a unique key and sends it with the request. You store that key with the result, and if you see it again you return the stored result instead of doing the work.',
+'Put a unique constraint on that key so two simultaneous copies can\'t both get through.',
+'Handle the awkward case: if the second request arrives while the first is still running, return a "still processing" response rather than charging twice.',
+'Why it matters here: phone networks in India drop and retry constantly. Duplicates aren\'t an edge case, they\'re normal.']},
 
-{s:'auth',d:'hard',nk:"Describe the behaviour you want rather than the pattern name: the same request sent twice must charge once. Then say you would key on a client-supplied id stored with a unique constraint. That is the whole answer.",
- q:'How do you make a booking or payment endpoint idempotent?',a:[
-'Client sends an Idempotency-Key per attempt; server stores key → (status, response) behind a unique constraint and replays the stored response.',
-'Handle the in-flight case — a second request while the first is processing gets 409, not a double charge.',
-'Why it matters here: Indian mobile networks retry hard. At-least-once makes duplicates a certainty, not an edge case.']},
+{s:'sys',d:'trap',q:'We are pre-launch with a small team. Do we start with microservices?',
+nk:"The answer is no. Say no clearly, then explain that you'd keep the code in tidy separate modules so you can split it later.",a:[
+'Say no, clearly. This is a judgement question and the confident wrong answer fails it.',
+'The reason: you don\'t know yet where the natural boundaries are. Getting a service split wrong is very expensive to undo. Getting a module split wrong takes an afternoon.',
+'What microservices actually cost a small team: network failures between services, no easy transactions, much harder debugging, and infrastructure work nobody has time for.',
+'Then show you could do it: keep the code in clearly separated modules that talk through defined interfaces, so pulling one out later is straightforward.',
+'Say when you would split: when one part needs to scale differently or ship on its own schedule. Notifications or image processing, for example.']},
 
-{s:'sys',d:'trap',q:'We are pre-launch with a small team. Do we start with microservices?',a:[
-'No — modular monolith with strict internal boundaries. This is a judgement test.',
-'Why: you don\'t know the domain boundaries yet, and a wrong service split costs far more to undo than a wrong module split.',
-'Then show you can do it anyway: "modules talk through interfaces and an internal event bus, so extracting one later is mechanical." Trigger to split: a different scaling profile or release cadence — notifications, media, ML scoring.']},
+{s:'sys',d:'trap',q:'Design a doctor-appointment booking system for 10 million users.',
+nk:"Never go silent here. Keep asking questions out loud, they count. Then build the simplest thing that works: one table, one unique rule, one queue. You can always add more.",a:[
+'Don\'t start drawing. Ask questions first, they are marked: video or in-person, do they pay before or after, how do cancellations work, when is the busy period?',
+'Do the maths out loud: 10 million users, maybe 2% book each month, so about 200,000 bookings. That\'s nothing on average. But everyone books at 8am, so the peak is what you design for. Reads massively outnumber writes.',
+'Booking flow: hold the slot using a unique constraint so two people can\'t take it, then take payment, then confirm. If payment fails, release the hold.',
+'Reading flow: cache doctor search and availability in Redis, use read replicas, and clear the cache when someone books.',
+'Push everything that can wait onto a queue: SMS, emails, reminders, analytics. Never do those while the user is waiting.',
+'End by saying what you\'d leave out for version one: no sharding, no microservices, one database. Add complexity when something forces you to.']},
 
-{s:'sys',d:'trap',nk:"Never freeze on a design question. Keep asking clarifying questions out loud — they are scored. Then build the smallest correct thing: one table, one unique constraint, one queue. You can always add scale; you cannot recover from silence.",
- q:'Design a doctor-appointment booking system for 10 million users.',a:[
-'Don\'t draw yet. Clarify: teleconsult vs in-person, read:write ratio, peak concurrency, payment before or after, cancellation policy.',
-'Estimate aloud: 10M users, 2% booking monthly ≈ 200k writes/month — trivial on average, but 50–100× at morning slot release. Reads dominate ~1000:1.',
-'Write path: slot hold with UNIQUE (doctor_id, slot_start) + TTL → payment → confirm, with a saga to release on failure.',
-'Read path: Redis cache on doctor search and availability, read replicas, invalidate on booking. Notifications and analytics go on a queue, never inline.',
-'Close with what you\'d cut for v1: single primary, no sharding, no microservices. Earn the complexity.']},
+{s:'sys',d:'hard',q:'Slot release at 8am — 50,000 users hit one doctor in ten seconds. What breaks?',
+nk:"Name one thing that breaks and one fix. \"The database runs out of connections, so I'd put the requests in a queue\" is a solid answer on its own.",a:[
+'What breaks: the database runs out of connections, the cache all expires at once so everyone hits the database together, and everyone fights over the same few rows.',
+'Fix one: don\'t process them all immediately. Accept the request, put it in a queue, give the user a "checking..." status, and work through them at a rate the database can handle.',
+'Fix two: when the cache expires, let one request refresh it while everyone else gets the slightly old value. Otherwise 50,000 requests all rebuild it at once.',
+'The people who lose get a clean "sorry, that slot has gone" from the unique constraint. Nothing gets corrupted.',
+'Then say the non-technical answer, because it\'s often the right one: release slots in staggered batches, or use a waiting room. Sometimes the cheapest fix is a product decision.']},
 
-{s:'sys',d:'hard',q:'Slot release at 8am — 50,000 users hit one doctor in ten seconds. What breaks?',a:[
-'Breaks: connection pool, cache stampede on the availability key, lock contention on hot rows.',
-'Queue the demand and return 202 with a booking-status handle; process at a controlled rate. Single-flight lock on the cache so 50k misses don\'t all hit the DB.',
-'Losers get a clean "gone" from the UNIQUE constraint, never corruption. And say the product answer: staggered release or a virtual waiting room — cheapest scaling is often product design.']},
+{s:'sys',d:'hard',q:'SSE vs WebSocket vs polling — pick for a live consultation queue.',
+nk:"Pick one and give a reason. Which one you pick matters less than whether you can explain the trade-off.",a:[
+'Server-Sent Events: the server pushes updates to the browser, one direction only. It\'s just HTTP, and it reconnects by itself. For a status feed that\'s all you need, which is why you swapped out polling at Karat.',
+'WebSockets: both directions. You need it for chat, but it\'s more to run and connections have to stick to the same server.',
+'Polling: simplest, and fine if you only check every 30 seconds. Wasteful if you need it live.',
+'Raise this before they do: both SSE and WebSockets hold connections open. If you have several servers, you need Redis to pass messages between them, otherwise a user connected to server A never hears about an event on server B.']},
 
-{s:'sys',d:'hard',nk:"Pick one and justify it in a sentence — the choice matters less than the reasoning. If unsure, say one-way updates do not need a bidirectional protocol, and raise the scaling caveat about long-lived connections.",
- q:'SSE vs WebSocket vs polling — pick for a live consultation queue.',a:[
-'SSE: one-way server→client, plain HTTP, auto-reconnect via Last-Event-ID. Perfect for a status feed — that\'s why you replaced polling at Karat.',
-'WebSocket: bidirectional, needed for chat; costs sticky connections and its own scaling story.',
-'Raise unprompted: both hold long-lived connections, so you need Redis pub/sub fan-out across instances and to size ALB idle timeouts.']},
+{s:'sys',d:'hard',q:'Two services must update together and one fails halfway.',
+nk:"If the pattern names go, describe the problem: you can't have one transaction across two services, so every step needs a way to undo itself.",a:[
+'Say the constraint first: you can\'t have one transaction spanning two services. So instead, each step is its own transaction and each has an undo step.',
+'Example: reserve the slot, take the payment, confirm the booking. If payment fails, run the undo for step one and release the slot.',
+'Better to have one piece of code driving the sequence than services reacting to each other\'s events. When it goes wrong you can actually see where it stopped.',
+'Add this if you have room: saving to your database and sending a message to a queue can\'t both be guaranteed. So you write the message into a table in the same transaction, and a separate job picks it up and sends it. That way they can\'t get out of sync.',
+'Consequence: messages can arrive twice, so anything receiving them has to handle duplicates.']},
 
-{s:'sys',d:'hard',nk:"If saga and outbox will not surface, say the constraint plainly: you cannot have a distributed transaction, so each step needs an undo. Naming the problem correctly beats naming the pattern wrongly.",
- q:'Two services must update together and one fails halfway.',a:[
-'No 2PC. Saga: local transactions with compensating actions. Book slot → charge → confirm; payment fails, emit a compensation that releases the slot.',
-'Orchestration over choreography for payments — explicit and debuggable.',
-'Pair with the Transactional Outbox: write the event in the same DB transaction, a relay publishes it. At-least-once, so consumers must be idempotent.']},
+{s:'sys',d:'hard',q:'How do you get from one Postgres to millions of daily transactions?',
+nk:"List them cheapest first and stop when you run out. The order matters more than naming all of them.",a:[
+'Go cheapest first, and say it in that order: fix the slow queries and add indexes, then add connection pooling, then read replicas, then caching, then a bigger machine, then split big tables by month, then finally shard.',
+'Most teams never need the last two. Say that.',
+'Split the appointments table by month so old data doesn\'t slow down today\'s queries.',
+'Move reporting off the main database early. Otherwise someone\'s monthly report slows down live bookings.',
+'Finish with: "I\'d rather measure which of these we actually need than build all of them upfront."']},
 
-{s:'sys',d:'hard',q:'How do you get from one Postgres to millions of daily transactions?',a:[
-'Cheapest first: indexes and query fixes → PgBouncer pooling → read replicas → caching → vertical scale → partitioning → functional split → sharding.',
-'Partition appointments by month so old data doesn\'t slow current queries. Move analytics off the transactional DB early.',
-'The line CTOs want: "I\'d measure which of these we actually need rather than pre-build all of them."']},
-
-{s:'code',d:'hard',nk:"If the implementation escapes you, say the shape: keep a set of in-flight promises, and when it hits the cap wait for one to finish before starting the next. Then write it slowly. Talking through it is allowed.",
- q:'Write an async pool that runs at most N promises concurrently.',a:[
-'Most likely Node coding question for this role — know it cold.',
-'Keep a set of running promises; when it hits the limit, await Promise.race to free a slot.',
-'Say why: unbounded Promise.all over 10k rows kills your DB pool.'],
+{s:'code',d:'hard',q:'Write an async pool that runs at most N promises concurrently.',
+nk:"If the code won't come, say the shape out loud: keep a set of running jobs, and when it's full, wait for one to finish before starting the next. Then write it slowly. Thinking aloud is allowed.",a:[
+'This is the most likely coding question for a Node backend role. Learn it properly.',
+'The idea: keep a set of jobs that are currently running. Once it\'s full, wait for any one of them to finish, then start the next.',
+'Say why it matters: Promise.all over 10,000 rows opens 10,000 connections and takes your database down.'],
 code:"async function pool(items, n, fn) {\n  const out = [], running = new Set();\n  for (const [i, item] of items.entries()) {\n    const p = Promise.resolve(fn(item, i))\n      .then(r => { out[i] = r; running.delete(p); });\n    running.add(p);\n    if (running.size >= n) await Promise.race(running);\n  }\n  await Promise.all(running);\n  return out;\n}"},
 
-{s:'code',d:'hard',q:'Implement retry with exponential backoff and jitter.',a:[
-'Say first: only retry idempotent or idempotency-keyed operations, and never retry 4xx.',
-'Jitter is the point — without it every client retries in lockstep and you re-DDOS yourself.',
-'Cap the delay and the attempts.'],
+{s:'code',d:'hard',q:'Implement retry with exponential backoff and jitter.',
+nk:"Even without the code, say the two rules: wait longer after each failure, and add a random amount so everyone isn't retrying at the same moment.",a:[
+'Say two things before you write anything: only retry things that are safe to repeat, and don\'t retry a 400-type error because it will fail again.',
+'Wait longer after each failure: 200ms, then 400, then 800.',
+'The random part matters. If every client retries after exactly 400ms, they all hit at once and knock the server over again. Adding a random amount spreads them out.',
+'Put a ceiling on the wait and a limit on the attempts.'],
 code:"const sleep = ms => new Promise(r => setTimeout(r, ms));\nasync function retry(fn, tries = 4, base = 200) {\n  for (let i = 0; ; i++) {\n    try { return await fn(); }\n    catch (e) {\n      if (i >= tries - 1 || e.status < 500) throw e;\n      const d = Math.min(base * 2 ** i, 5000);\n      await sleep(d * (0.5 + Math.random() / 2));\n    }\n  }\n}"},
 
-{s:'code',d:'expected',q:'SQL: doctors with more than 3 completed appointments in the last 30 days, most active first.',a:[
-'WHERE filters rows, HAVING filters groups — say that distinction out loud.',
-'Use an interval, never a hardcoded date.',
-'If pushed on speed: index on (doctor_id, status, created_at).'],
+{s:'code',d:'expected',q:'SQL: doctors with more than 3 completed appointments in the last 30 days, most active first.',
+nk:"If you mix up WHERE and HAVING, say it out loud: WHERE picks rows, HAVING picks groups. Working it out beats guessing.",a:[
+'The distinction they\'re checking: WHERE filters rows before grouping, HAVING filters the groups after. Say that.',
+'Use an interval rather than typing a date, so it still works next month.',
+'If they ask about speed: an index on doctor_id, status and created_at.'],
 code:"SELECT d.id, d.name, COUNT(*) AS n\nFROM appointments a\nJOIN doctors d ON d.id = a.doctor_id\nWHERE a.status = 'completed'\n  AND a.created_at >= NOW() - INTERVAL '30 days'\nGROUP BY d.id, d.name\nHAVING COUNT(*) > 3\nORDER BY n DESC;"},
 
-{s:'code',d:'hard',q:'Why is OFFSET pagination bad at scale?',a:[
-'OFFSET 100000 scans and discards 100k rows — linearly slower. It also skips or repeats rows when data shifts between pages.',
-'Keyset pagination uses the index and stays constant-time.',
-'Tradeoff: no jumping to page 50. Fine for feeds.'],
+{s:'code',d:'hard',q:'Why is OFFSET pagination bad at scale?',
+nk:"One sentence is enough: to get page 5000, the database still has to count through everything before it.",a:[
+'To fetch page 5,000, the database still reads and throws away the first 100,000 rows. So it gets slower the deeper you go.',
+'There\'s a correctness problem too: if someone adds a row while you\'re paging, you either see a row twice or miss one.',
+'Instead, remember the last row you saw and ask for everything after it. That uses the index and stays fast no matter how deep you go.',
+'The trade-off: you can\'t jump straight to page 50. Fine for feeds and scrolling, not for a page-number list.'],
 code:"SELECT * FROM appointments\nWHERE (created_at, id) < ($1, $2)\nORDER BY created_at DESC, id DESC\nLIMIT 20;"},
 
-{s:'fit',d:'trap',
-nk:"If your real coverage was thin, say so and say what you'd fix first: \"the service layer had unit tests, the integration layer didn't — that's the first thing I'd close.\" An honest gap with a plan beats an invented coverage number.",
-q:'You said the NestJS migration made the backend unit-testable. Tested with what, exactly?',a:[
-'Name the stack: Jest as the runner, Supertest for HTTP-level route tests, and Nest\'s Test.createTestingModule to swap real repositories for mocks.',
-'Explain why DI was the unlock — before the migration, business logic was welded to Express req/res, so nothing could be tested without booting a server.',
-'Postman is where the API contract lives: collections per module with pm.test assertions on status, schema and response shape, run as smoke tests after every deploy. Newman is how you\'d put that same collection in CI.',
-'Be precise about what Postman is and isn\'t — it verifies the contract from outside; it does not replace unit tests, and it won\'t catch a broken branch inside a service. Saying that unprompted shows you know the difference.',
-'The pyramid: Jest unit tests on services (fast, most of the suite) → Supertest/Postman at the API boundary → Playwright for critical end-to-end flows only.',
-'Be honest about coverage. "Critical paths covered, not a percentage I\'d quote" beats a number you can\'t defend.']},
+{s:'fit',d:'trap',q:'You said the NestJS migration made the backend unit-testable. Tested with what, exactly?',
+nk:"If the real coverage was thin, say so: \"The services had tests, the integration side didn't. That's what I'd fix first.\" An honest gap with a plan is fine. An invented number is not.",a:[
+'Name the tools: Jest to run the tests, Supertest to call the routes, and Nest\'s testing module to swap the real database for a fake one.',
+'Explain why the migration made it possible: before, the logic was tangled up with Express request and response objects, so you couldn\'t test anything without starting a server.',
+'Postman is where the API contract lives: a collection per module that checks status codes and response shapes, run after each deploy as a smoke test. Newman runs the same collection in CI.',
+'Be clear about what Postman is not: it checks the API from the outside. It won\'t catch a broken branch inside a service. Saying that yourself shows you know the difference.',
+'The shape of it: lots of fast Jest tests on services, a smaller number hitting real routes, and Playwright only for the few flows that really matter.',
+'On coverage, don\'t quote a percentage you can\'t back up. "The important paths are covered" is a better answer.']},
 
-{s:'fit',d:'trap',
-nk:"Don't defend AI-generated tests as if they're free. If you haven't audited them closely, say that — \"they catch regressions, but I haven't gone back to check the assertions are meaningful\" — and name it as something you'd tighten.",
-q:'You use Claude to generate your Playwright tests. Do you actually review them?',a:[
-'Yes — frame AI as a first-draft accelerator with you as the reviewer, never as an authority.',
-'Name the specific failure mode: generated tests love asserting on trivia — that an element exists rather than that the flow produced the right outcome. So you review assertions hardest.',
-'Point at the result: regressions caught pre-merge instead of in production.',
-'A 0-to-1 CTO probably wants AI-fluent engineers. Lean in, but show the judgement that makes it safe.']},
+{s:'fit',d:'trap',q:'You use Claude to generate your Playwright tests. Do you actually review them?',
+nk:"If you haven't checked them closely, say so: \"They catch regressions, but I haven't gone back to check the assertions are meaningful.\" Then say you'd tighten that.",a:[
+'Yes, and be clear it\'s a first draft you review, not something you trust blindly.',
+'Name the specific problem: generated tests tend to check that a button exists rather than that the thing actually worked. So the assertions are what you read most carefully.',
+'Point at the result: you catch broken flows before merging instead of after release.',
+'A startup CTO probably wants people who use AI well. Lean into it, but show you know where it goes wrong.']},
 
-{s:'fit',d:'trap',q:'Tell me about the worst bug you shipped to production.',a:[
-'Pick a real one with consequences — your Evify auth or order-tracking incidents are natural material.',
-'What broke → blast radius → how you found it → how you stopped the bleeding → what you changed so it can\'t recur.',
-'The last part is the whole answer. Never pick a bug that was someone else\'s fault.']},
+{s:'fit',d:'trap',q:'Tell me about the worst bug you shipped to production.',
+nk:"Pick your story tonight, don't search for one in the room. Any real bug works as long as you can say what you changed afterwards.",a:[
+'Pick a real one with real consequences. Your Evify auth or order-tracking incidents work well.',
+'Tell it in order: what broke, how many people it affected, how you found it, what you did to stop it, and what you changed so it can\'t happen again.',
+'The last part is the answer. They want to know you turn incidents into fixes: a test, a database constraint, an alert.',
+'Never pick a bug that was someone else\'s fault. It reads as blame-shifting.']},
 
-{s:'fit',d:'expected',q:'What do you ask them?',a:[
-'"Is the backend a modular monolith today or already split — and what drove that call?"',
-'"What\'s the first module you\'d want me to own end to end?"',
-'"The JD says millions of daily transactions — what\'s the volume today, and is ABDM integration on the roadmap?"',
-'Ask three, not six. Pick the ones whose answers would change your decision.']}
+{s:'fit',d:'expected',q:'What do you ask them?',
+nk:"Have three written down. Asking nothing reads as not caring.",a:[
+'"Is the backend one codebase at the moment or already split into services, and what drove that decision?"',
+'"What\'s the first thing you\'d want me to own end to end?"',
+'"The JD mentions millions of daily transactions. What\'s the volume today, and is ABDM integration on the roadmap?"',
+'Ask three, not six. Pick the ones whose answers would actually change your decision.']}
 ];
 B.forEach((x,i)=>x.i=i);
 
