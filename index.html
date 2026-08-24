@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Prep">
 <meta name="theme-color" content="#15694A">
-<title>Ayuradhar CTO Round — 34 Questions</title>
+<title>Ayuradhar CTO Round — 35 Questions</title>
 <style>
 :root{
   --paper:#F5F7F4;--surface:#fff;--surface2:#EAEFE9;--ink:#14201A;--muted:#5E6B63;--line:#D8DFD8;
@@ -86,6 +86,9 @@ button{cursor:pointer;border:0;background:none}
 .ans ul{margin:0;padding-left:17px}.ans li{font-size:14.5px;margin:6px 0}
 .ans h4{margin:0 0 6px;font:600 10px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;margin:9px 0 0;font:12.5px/1.55 var(--mono)}
+.nk{margin-top:13px;padding:11px 12px;border-radius:10px;background:var(--warn-soft);border-left:3px solid var(--warn)}
+.nk h5{margin:0 0 5px;font:600 9.5px var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--warn)}
+.nk p{margin:0;font-size:14px;line-height:1.5}
 .act{display:flex;gap:7px;margin-top:11px}
 .act button{flex:1;padding:13px 5px;border-radius:11px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;font-weight:600}
 .act .big{background:var(--accent);border-color:var(--accent);color:var(--paper)}
@@ -139,7 +142,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
   <div class="ring"><svg width="42" height="42"><circle cx="21" cy="21" r="17" fill="none" stroke="var(--line)" stroke-width="4"/>
     <circle id="rc" cx="21" cy="21" r="17" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"
     stroke-dasharray="107" stroke-dashoffset="107" style="transition:stroke-dashoffset .4s"/></svg><b id="rt">0%</b></div>
-  <div class="brand">Ayuradhar · CTO Round<small id="crumb">34 questions</small></div>
+  <div class="brand">Ayuradhar · CTO Round<small id="crumb">35 questions</small></div>
   <button class="ib" id="theme" title="Theme">◐</button>
   <button class="ib" id="reset" title="Reset">↺</button>
 </div></header>
@@ -149,7 +152,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
   <div class="hero">
     <div class="kicker">Wednesday · 60 minutes</div>
     <h1>Backend-first, brutally.</h1>
-    <p>34 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
+    <p>35 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
   </div>
   <div class="card"><h3>Your 60-second opener</h3>
     <p class="pitch">"Four years, mostly backend. Node/Express + MongoDB services at Kangaroo and Glazer — a matching engine, aggregation pipelines, AWS Rekognition and Lambda for a 100-rider fleet. At Antino I led the Express → NestJS migration on RxMen, a healthcare platform, and designed the Postgres schemas behind appointments, payments and patient records. I also own auth — Cognito, JWT, RBAC — on a SEBI-regulated fintech product. I have real frontend range, but backend and AWS are where I go deep."</p></div>
@@ -169,6 +172,13 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
     <li><b>Tuesday:</b> Drill → "Needs work", then one Mock run start to finish.</li>
     <li>Push the ring past 80%. Anything red on Wednesday morning, skip — don't cram new material.</li>
   </ul></div>
+  <div class="card"><h3>How you measured it — say the tool</h3><ul>
+    <li><b>Frontend (~30%):</b> Lighthouse + DevTools Performance for LCP/TTFB · React DevTools Profiler for re-renders · PostHog for real-user vitals.</li>
+    <li><b>API (~20%):</b> Postman Collection Runner for endpoint timing · EXPLAIN (ANALYZE, BUFFERS) + pg_stat_statements for queries · CloudWatch p95/p99 in prod.</li>
+    <li><b>Volume (10k+):</b> CloudWatch / API Gateway request count — a counter, not an estimate.</li>
+    <li><b>Mongo:</b> .explain("executionStats") · the profiler for slow ops · Atlas Performance Advisor.</li>
+    <li><b>Never claimed:</b> a formal load test. If asked, say k6/autocannon is what you'd use and that it's a real gap.</li>
+  </ul></div>
   <div class="card"><h3>Decide this before Wednesday</h3><ul>
     <li>Which real production bug is your "worst bug" story — and what you changed so it couldn't recur.</li>
     <li>The one-line honest source for each number: the ~20%, the ~30%, the 10k.</li>
@@ -177,7 +187,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
 </div></section>
 
 <section class="panel" id="p-drill"><div class="wrap">
-  <div class="dtop"><span id="dpos">1/34</span><span class="bar"><i id="dbar"></i></span>
+  <div class="dtop"><span id="dpos">1/35</span><span class="bar"><i id="dbar"></i></span>
     <span id="streak" style="color:var(--accent);font-weight:600"></span></div>
   <div class="chips" id="dchips"></div>
   <div class="dcard" id="dcard"></div>
@@ -230,7 +240,7 @@ const B=[
 'Land on: "backend and AWS are where I go deep."']},
 
 {s:'open',d:'trap',q:'"10k+ monthly requests" is one request every four minutes. Why is that on your résumé?',a:[
-'Own it, never inflate: "that\'s the honest number for that product\'s stage."',
+'Own it, never inflate: "that\'s the honest number for that product\'s stage — a CloudWatch request count, not an estimate."',
 'Show you know what changes: "at 10k/month, pooling and indexing are optional. At millions/day they are the whole job."',
 'Then prove it anyway: "here\'s what I\'d do differently at 1000× — pooling, read replicas, caching, partitioning."']},
 
@@ -239,12 +249,14 @@ const B=[
 'Yours: Cognito auth flows, NestJS migration, Postgres schema design, Mongo aggregation pipelines, Evify AWS integrations.',
 'Shared: Karat architecture decisions and the fintech backend services. Saying "that part wasn\'t mine" once buys trust for everything else.']},
 
-{s:'node',d:'expected',q:'Explain the Node event loop.',a:[
+{s:'node',d:'expected',nk:"Give the phase names even if you cannot explain each one, then pivot to the consequence you do understand: a synchronous heavy function blocks every request on that process. The practical grasp is worth more than reciting six phases.",
+ q:'Explain the Node event loop.',a:[
 'Phases: timers → pending callbacks → poll → check (setImmediate) → close. Microtasks drain between every phase — nextTick first, then promises.',
 'poll is where I/O callbacks run and where the loop blocks when nothing else is pending.',
 'Consequence that matters: one synchronous heavy function stalls every request on that process.']},
 
-{s:'node',d:'hard',q:'Node is single-threaded. How do you use a 16-core box, and where does CPU-heavy work go?',a:[
+{s:'node',d:'hard',nk:"Correct the premise first — that alone scores. If the threadpool detail escapes you, go straight to the answer that matters operationally: run N containers behind a load balancer and push CPU work onto a queue.",
+ q:'Node is single-threaded. How do you use a 16-core box, and where does CPU-heavy work go?',a:[
 'Correct the premise: JS execution is single-threaded; libuv runs a threadpool (default 4) for fs, DNS, crypto, zlib.',
 'Scale out: cluster/PM2, or N containers behind a load balancer — the latter on ECS/K8s.',
 'CPU-bound: worker_threads, or better, off the request path entirely onto a queue. PDF and report generation is exactly that.']},
@@ -255,7 +267,8 @@ const B=[
 'The answer that sounds experienced: bound it.'],
 code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  await Promise.all(items.slice(i, i + limit).map(save));\n}"},
 
-{s:'node',d:'hard',q:'How do you handle errors in async Node? What about uncaughtException?',a:[
+{s:'node',d:'hard',nk:"Anchor on the one rule you will not get wrong: crash and restart on an unhandled rejection, never keep serving from a corrupted process. Then say you would check whether the framework catches async errors before relying on it.",
+ q:'How do you handle errors in async Node? What about uncaughtException?',a:[
 'Express 4 does not catch async rejections — wrap handlers or they never reach error middleware. NestJS ExceptionFilter does it for you.',
 'One centralised handler mapping domain errors to HTTP codes.',
 'unhandledRejection/uncaughtException: log with context, then exit and let the orchestrator restart. Never serve from a corrupted process.']},
@@ -265,7 +278,8 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'After: enforced module boundaries and DI, so services test with mocked repositories. Guards for authz, Pipes for DTO validation, Interceptors for logging.',
 'Volunteer the cost: more boilerplate, steeper curve, and the migration had to be incremental — strangler-fig, route group by route group.']},
 
-{s:'db',d:'trap',q:'Two patients book the same slot in the same millisecond. What does your code do?',a:[
+{s:'db',d:'trap',nk:"If nothing comes, say the honest general form: \"application-level check-then-insert is a race, so correctness has to live in the database.\" That sentence alone gets you most of the credit, then let them lead you to the unique constraint.",
+ q:'Two patients book the same slot in the same millisecond. What does your code do?',a:[
 'Best answer, say it first: a UNIQUE constraint on (doctor_id, slot_start). One insert wins; the other gets 23505, which you translate into "slot just taken".',
 'Say explicitly that an application-level check-then-insert is a race — that\'s the signal they\'re looking for.',
 'Alternatives: SELECT … FOR UPDATE inside a transaction, or SERIALIZABLE with retry. A Redis lock is an optimisation; the DB constraint is truth.']},
@@ -275,17 +289,29 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'Correctness lives in constraints: FKs, UNIQUE (doctor_id, slot_start), status as an enum.',
 'Indexes with reasons: (doctor_id, slot_start) for availability, (patient_id, created_at DESC) for history. Soft-delete + audit columns — healthcare never hard-deletes.']},
 
-{s:'db',d:'hard',q:'WHERE doctor_id=$1 AND status=$2 ORDER BY slot_start — design the index.',a:[
+{s:'db',d:'hard',nk:"Say the principle out loud and derive it: equality columns first, then the column you sort by. If you are unsure of the exact order, reason through it in front of them — that is the skill being tested.",
+ q:'WHERE doctor_id=$1 AND status=$2 ORDER BY slot_start — design the index.',a:[
 '(doctor_id, status, slot_start): equality columns first, then the ORDER BY column so the sort is free.',
 'Leftmost-prefix — it serves doctor_id alone, but never status alone.',
 'If you always want one status, a partial index WHERE status=\'booked\' is smaller. Cost to name: every index slows writes.']},
 
-{s:'db',d:'hard',q:'How did you cut RxMen response time ~20%?',a:[
-'Structure it: measured → found → fixed → re-measured. If you didn\'t instrument properly, say so and describe what you\'d do now.',
-'Real causes: N+1 from TypeORM lazy relations, missing composite index, SELECT * pulling unused columns, no pagination.',
-'Show the tool: EXPLAIN (ANALYZE, BUFFERS) before and after — seq scan became index scan.']},
+{s:'db',d:'hard',q:'How did you cut RxMen response time ~20%? Measured with what?',a:[
+'Structure it: measured → found → fixed → re-measured. Name the tool at each step or the number sounds invented.',
+'Endpoint timing: Postman Collection Runner over a fixed set of requests, before and after. A NestJS interceptor logging duration per route gives you the same thing continuously.',
+'Query level: EXPLAIN (ANALYZE, BUFFERS) in psql — seq scan became index scan. pg_stat_statements ranks the slowest queries by total time, which is how you find what to fix first.',
+'Production view: CloudWatch p95/p99 latency per endpoint, not averages — averages hide the tail.',
+'Real causes you found: N+1 from TypeORM lazy relations, a missing composite index, SELECT * pulling unused columns.']},
 
-{s:'db',d:'hard',q:'What is an N+1 query and how do you kill it in TypeORM?',a:[
+{s:'open',d:'trap',q:'Pick any number on your résumé and tell me exactly how you measured it.',a:[
+'Only claim the tool you actually used. If a number was informal, say "that was a before/after on the same profile, not instrumented — here\'s how I\'d measure it properly now." That answer survives; a bluffed tool does not.',
+'~30% page load (Karat): Lighthouse and the Chrome DevTools Performance panel for LCP/TTFB, React DevTools Profiler to find the redundant re-renders, DevTools Network waterfall to prove the API batching helped. PostHog for real-user web vitals rather than your laptop.',
+'~20% API response (RxMen): Postman Collection Runner for repeatable endpoint timing, EXPLAIN (ANALYZE, BUFFERS) and pg_stat_statements at the query level, CloudWatch p95/p99 in production.',
+'10k+ monthly requests: CloudWatch / API Gateway request-count metrics — that\'s a counter, not an estimate, so say so plainly.',
+'Evify timeouts and ERoomRent lookups: .explain("executionStats") for docsExamined vs nReturned, the Mongo profiler for slow ops, Atlas Performance Advisor for index suggestions.',
+'If they push further: "for load I\'d use k6 or autocannon — I haven\'t run a formal load test on these, which is exactly the gap I want to close at scale."']},
+
+{s:'db',d:'hard',nk:"If the ORM specifics go, define the problem precisely — one query for the list, then one per row — and say the fix is to fetch the related rows in a single query. Naming it correctly is most of the credit.",
+ q:'What is an N+1 query and how do you kill it in TypeORM?',a:[
 '50 appointments, then lazily touching .patient on each → 51 queries.',
 'Fix: relations:[\'patient\'] or leftJoinAndSelect. For big fan-out, a batched WHERE id IN (…) beats a join that multiplies rows.',
 'Detection: query logging in staging, or count queries per request in an interceptor.']},
@@ -300,7 +326,8 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'Evify story: a collection scan on order/rider lookups with no supporting index, growing until it blew the timeout.',
 'Diagnosis: .explain("executionStats"), COLLSCAN, totalDocsExamined vs nReturned. Fix: compound index matching the query shape + maxTimeMS so slow queries fail fast.']},
 
-{s:'db',d:'hard',q:'Explain your ERoomRent aggregation pipeline.',a:[
+{s:'db',d:'hard',nk:"If the stage order goes, fall back to the rule: filter as early as possible so the index does the work and later stages see fewer documents. That principle covers most of what they are checking.",
+ q:'Explain your ERoomRent aggregation pipeline.',a:[
 '$match and $sort first so an index is used, then $lookup, $group, $project. $match before $lookup or you join far more than you need.',
 '$facet gives results and total count in one round trip — the paginated-search shape.',
 'Limits worth naming: $lookup isn\'t a real join, 100MB per stage without allowDiskUse. ESR rule: Equality, Sort, Range.']},
@@ -310,22 +337,26 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'Gave: hosted sign-in, MFA (Pinpoint SMS), password policy, token refresh, no password-storage liability.',
 'Your API verifies the JWT against the cached JWKS — signature, iss, aud, exp, token_use. Tradeoffs: lock-in, awkward custom flows via Lambda triggers, cost at millions of MAU.']},
 
-{s:'auth',d:'hard',q:'How do you revoke a JWT before it expires?',a:[
+{s:'auth',d:'hard',nk:"Start from the true statement: a stateless token cannot be revoked, only expired or checked against something stateful. If you cannot recall the patterns, say short TTLs are the cheap answer and a denylist is the expensive one.",
+ q:'How do you revoke a JWT before it expires?',a:[
 'You can\'t revoke a stateless JWT — you can only make it useless. Short access token (5–15 min) + rotating refresh token with reuse detection.',
 'For real revocation: a jti/user denylist in Redis checked at the edge, or a tokenVersion on the user for "log out everywhere".',
 'Refresh token in an httpOnly, Secure, SameSite cookie. localStorage is an XSS handover.']},
 
-{s:'auth',d:'hard',q:'Design RBAC for doctors, patients, lab techs, admins. Where does it break?',a:[
+{s:'auth',d:'hard',nk:"If the design will not come, jump to where it breaks — \"a doctor should only see their own patients\" — because naming the limitation of RBAC is the actual insight they want.",
+ q:'Design RBAC for doctors, patients, lab techs, admins. Where does it break?',a:[
 'Roles → permissions checked in a Guard; role in the token, permission mapping server-side.',
 'It breaks at: "a doctor sees a patient record — but only their own patients." That\'s relationship-based, not role-based.',
 'So: RBAC for coarse access + a resource-ownership check on every read. Plus break-glass emergency access that\'s allowed but heavily audited.']},
 
-{s:'auth',d:'trap',q:'What changes when the data is patient health records instead of orders?',a:[
+{s:'auth',d:'trap',nk:"Do not invent regulation names. Say what you would enforce regardless — audit every read, encrypt at rest, never log PHI, never hard-delete — and say you would take legal guidance on the specific Indian requirements.",
+ q:'What changes when the data is patient health records instead of orders?',a:[
 'Name the India specifics: DPDP Act 2023, and ABDM/ABHA if they go national. Consent is a product feature, not a checkbox.',
 'Immutable audit log of every read — who viewed a record matters as much as who changed it.',
 'Encryption at rest via KMS, field-level for identifiers, PHI redacted at the logger, and no hard deletes — tombstone plus revoke access.']},
 
-{s:'auth',d:'hard',q:'How do you make a booking or payment endpoint idempotent?',a:[
+{s:'auth',d:'hard',nk:"Describe the behaviour you want rather than the pattern name: the same request sent twice must charge once. Then say you would key on a client-supplied id stored with a unique constraint. That is the whole answer.",
+ q:'How do you make a booking or payment endpoint idempotent?',a:[
 'Client sends an Idempotency-Key per attempt; server stores key → (status, response) behind a unique constraint and replays the stored response.',
 'Handle the in-flight case — a second request while the first is processing gets 409, not a double charge.',
 'Why it matters here: Indian mobile networks retry hard. At-least-once makes duplicates a certainty, not an edge case.']},
@@ -335,7 +366,8 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'Why: you don\'t know the domain boundaries yet, and a wrong service split costs far more to undo than a wrong module split.',
 'Then show you can do it anyway: "modules talk through interfaces and an internal event bus, so extracting one later is mechanical." Trigger to split: a different scaling profile or release cadence — notifications, media, ML scoring.']},
 
-{s:'sys',d:'trap',q:'Design a doctor-appointment booking system for 10 million users.',a:[
+{s:'sys',d:'trap',nk:"Never freeze on a design question. Keep asking clarifying questions out loud — they are scored. Then build the smallest correct thing: one table, one unique constraint, one queue. You can always add scale; you cannot recover from silence.",
+ q:'Design a doctor-appointment booking system for 10 million users.',a:[
 'Don\'t draw yet. Clarify: teleconsult vs in-person, read:write ratio, peak concurrency, payment before or after, cancellation policy.',
 'Estimate aloud: 10M users, 2% booking monthly ≈ 200k writes/month — trivial on average, but 50–100× at morning slot release. Reads dominate ~1000:1.',
 'Write path: slot hold with UNIQUE (doctor_id, slot_start) + TTL → payment → confirm, with a saga to release on failure.',
@@ -347,12 +379,14 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'Queue the demand and return 202 with a booking-status handle; process at a controlled rate. Single-flight lock on the cache so 50k misses don\'t all hit the DB.',
 'Losers get a clean "gone" from the UNIQUE constraint, never corruption. And say the product answer: staggered release or a virtual waiting room — cheapest scaling is often product design.']},
 
-{s:'sys',d:'hard',q:'SSE vs WebSocket vs polling — pick for a live consultation queue.',a:[
+{s:'sys',d:'hard',nk:"Pick one and justify it in a sentence — the choice matters less than the reasoning. If unsure, say one-way updates do not need a bidirectional protocol, and raise the scaling caveat about long-lived connections.",
+ q:'SSE vs WebSocket vs polling — pick for a live consultation queue.',a:[
 'SSE: one-way server→client, plain HTTP, auto-reconnect via Last-Event-ID. Perfect for a status feed — that\'s why you replaced polling at Karat.',
 'WebSocket: bidirectional, needed for chat; costs sticky connections and its own scaling story.',
 'Raise unprompted: both hold long-lived connections, so you need Redis pub/sub fan-out across instances and to size ALB idle timeouts.']},
 
-{s:'sys',d:'hard',q:'Two services must update together and one fails halfway.',a:[
+{s:'sys',d:'hard',nk:"If saga and outbox will not surface, say the constraint plainly: you cannot have a distributed transaction, so each step needs an undo. Naming the problem correctly beats naming the pattern wrongly.",
+ q:'Two services must update together and one fails halfway.',a:[
 'No 2PC. Saga: local transactions with compensating actions. Book slot → charge → confirm; payment fails, emit a compensation that releases the slot.',
 'Orchestration over choreography for payments — explicit and debuggable.',
 'Pair with the Transactional Outbox: write the event in the same DB transaction, a relay publishes it. At-least-once, so consumers must be idempotent.']},
@@ -362,7 +396,8 @@ code:"const limit = 10;\nfor (let i = 0; i < items.length; i += limit) {\n  awai
 'Partition appointments by month so old data doesn\'t slow current queries. Move analytics off the transactional DB early.',
 'The line CTOs want: "I\'d measure which of these we actually need rather than pre-build all of them."']},
 
-{s:'code',d:'hard',q:'Write an async pool that runs at most N promises concurrently.',a:[
+{s:'code',d:'hard',nk:"If the implementation escapes you, say the shape: keep a set of in-flight promises, and when it hits the cap wait for one to finish before starting the next. Then write it slowly. Talking through it is allowed.",
+ q:'Write an async pool that runs at most N promises concurrently.',a:[
 'Most likely Node coding question for this role — know it cold.',
 'Keep a set of running promises; when it hits the limit, await Promise.race to free a slot.',
 'Say why: unbounded Promise.all over 10k rows kills your DB pool.'],
@@ -413,8 +448,15 @@ function body(x,mine){
   f.append(el('h4',null,'Model answer'));
   const ul=el('ul');x.a.forEach(t=>ul.append(el('li',null,t)));f.append(ul);
   if(x.code){const pre=el('pre');pre.append(el('code',null,x.code));f.append(pre)}
+  const box=el('div','nk');box.append(el('h5',null,"If you blank"));
+  box.append(el('p',null,x.nk||NK[x.d]));f.append(box);
   return f;
 }
+const NK={
+ expected:"You're expected to know this one, so don't invent — buy time instead. Restate the question in your own words, then start from the concrete project where you did it. Talking about the real system will surface the detail.",
+ hard:"Say the boundary out loud: \"I know X, I haven't hit Y in production.\" Then reason forward — \"here's how I'd think about it\" — and let them correct you. Being coachable reads better than being wrong with confidence.",
+ trap:"Don't fill the silence with a guess. Traps test judgement, not recall. Say the honest thing first — what you did, what you didn't, what you'd verify — then reason out loud. Bluffing here is what actually loses the round."
+};
 function pct(){let p=0;B.forEach(x=>{const v=ST[x.i];p+=v==='good'?1:v==='shaky'?.5:0});return Math.round(p/B.length*100)}
 function ring(){const s=pct();$('rc').setAttribute('stroke-dashoffset',107-107*s/100);$('rt').textContent=s+'%';
   const n=B.filter(x=>!ST[x.i]).length;
