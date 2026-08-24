@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Prep">
 <meta name="theme-color" content="#15694A">
-<title>Ayuradhar CTO Round — 37 Questions</title>
+<title>Ayuradhar CTO Round — 34 Questions</title>
 <style>
 :root{
   --paper:#F5F7F4;--surface:#fff;--surface2:#EAEFE9;--ink:#14201A;--muted:#5E6B63;--line:#D8DFD8;
@@ -139,7 +139,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
   <div class="ring"><svg width="42" height="42"><circle cx="21" cy="21" r="17" fill="none" stroke="var(--line)" stroke-width="4"/>
     <circle id="rc" cx="21" cy="21" r="17" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"
     stroke-dasharray="107" stroke-dashoffset="107" style="transition:stroke-dashoffset .4s"/></svg><b id="rt">0%</b></div>
-  <div class="brand">Ayuradhar · CTO Round<small id="crumb">37 questions</small></div>
+  <div class="brand">Ayuradhar · CTO Round<small id="crumb">34 questions</small></div>
   <button class="ib" id="theme" title="Theme">◐</button>
   <button class="ib" id="reset" title="Reset">↺</button>
 </div></header>
@@ -149,7 +149,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
   <div class="hero">
     <div class="kicker">Wednesday · 60 minutes</div>
     <h1>Backend-first, brutally.</h1>
-    <p>37 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
+    <p>34 questions, not 300. These are the ones where you can actually lose the offer. Two evenings is enough.</p>
   </div>
   <div class="card"><h3>Your 60-second opener</h3>
     <p class="pitch">"Four years, mostly backend. Node/Express + MongoDB services at Kangaroo and Glazer — a matching engine, aggregation pipelines, AWS Rekognition and Lambda for a 100-rider fleet. At Antino I led the Express → NestJS migration on RxMen, a healthcare platform, and designed the Postgres schemas behind appointments, payments and patient records. I also own auth — Cognito, JWT, RBAC — on a SEBI-regulated fintech product. I have real frontend range, but backend and AWS are where I go deep."</p></div>
@@ -169,16 +169,15 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
     <li><b>Tuesday:</b> Drill → "Needs work", then one Mock run start to finish.</li>
     <li>Push the ring past 80%. Anything red on Wednesday morning, skip — don't cram new material.</li>
   </ul></div>
-  <div class="card"><h3>Answer these yourself before Wednesday</h3><ul>
-    <li>Why was Glazer only five months?</li>
-    <li>What were you doing Aug–Oct 2024?</li>
-    <li>Which real production bug is your "worst bug" story?</li>
+  <div class="card"><h3>Decide this before Wednesday</h3><ul>
+    <li>Which real production bug is your "worst bug" story — and what you changed so it couldn't recur.</li>
+    <li>The one-line honest source for each number: the ~20%, the ~30%, the 10k.</li>
   </ul></div>
   <div class="foot">Saved on your machine · works offline</div>
 </div></section>
 
 <section class="panel" id="p-drill"><div class="wrap">
-  <div class="dtop"><span id="dpos">1/37</span><span class="bar"><i id="dbar"></i></span>
+  <div class="dtop"><span id="dpos">1/34</span><span class="bar"><i id="dbar"></i></span>
     <span id="streak" style="color:var(--accent);font-weight:600"></span></div>
   <div class="chips" id="dchips"></div>
   <div class="dcard" id="dcard"></div>
@@ -215,7 +214,7 @@ pre{background:var(--surface2);border-radius:9px;padding:11px;overflow-x:auto;ma
 
 <script>
 const SECS=[['open','Opening & the attack'],['node','Node.js'],['db','Postgres & Mongo'],
-['auth','Auth & health data'],['sys','Design & distributed'],['code','Coding'],['fit','Fit & closing']];
+['auth','Auth & health data'],['sys','Design & distributed'],['code','Coding'],['fit','Incidents & closing']];
 const SN=Object.fromEntries(SECS);
 
 const B=[
@@ -229,11 +228,6 @@ const B=[
 'Glazer/Evify → Node backend, Mongo schemas, Rekognition + S3 + Lambda + SNS, 100-rider fleet.',
 'Antino (2 yr, promoted) → RxMen: Express→NestJS, Postgres schemas for 5 modules. Karat: Cognito auth + Next.js app.',
 'Land on: "backend and AWS are where I go deep."']},
-
-{s:'open',d:'trap',q:'Three companies in four years, and Glazer was only five months. Will you leave in six?',a:[
-'Answer flat, no hedging — Kangaroo 18 months, Antino 2 years with a promotion. The pattern is stable.',
-'Give the true one-sentence reason for Glazer. Don\'t improvise it in the room.',
-'Pivot: "each move was toward more backend ownership. Ground-floor and onsite is exactly what I\'d stay for."']},
 
 {s:'open',d:'trap',q:'"10k+ monthly requests" is one request every four minutes. Why is that on your résumé?',a:[
 'Own it, never inflate: "that\'s the honest number for that product\'s stage."',
@@ -392,16 +386,6 @@ code:"SELECT d.id, d.name, COUNT(*) AS n\nFROM appointments a\nJOIN doctors d ON
 'Tradeoff: no jumping to page 50. Fine for feeds.'],
 code:"SELECT * FROM appointments\nWHERE (created_at, id) < ($1, $2)\nORDER BY created_at DESC, id DESC\nLIMIT 20;"},
 
-{s:'fit',d:'expected',q:'Why a stealth startup, onsite, when you have a Senior title at an agency?',a:[
-'Agency vs product: at an agency you hand the codebase over; here you live with your decisions.',
-'Ground floor is the draw — schema, service boundaries, engineering practices. You\'ve inherited those choices, never made them.',
-'Say plainly you\'re fine with onsite and confirm the location. Don\'t leave ambiguity that costs you the offer.']},
-
-{s:'fit',d:'expected',q:'Why healthcare?',a:[
-'Real reason, not a slogan — RxMen gave you actual domain exposure: appointments, patient records, prescriptions.',
-'What makes it technically interesting: correctness and auditability matter in a way they don\'t in e-commerce.',
-'Show you looked: ABDM, fragmented records, the tier-2/3 access gap. One personal line is fine; two is a speech.']},
-
 {s:'fit',d:'trap',q:'Tell me about the worst bug you shipped to production.',a:[
 'Pick a real one with consequences — your Evify auth or order-tracking incidents are natural material.',
 'What broke → blast radius → how you found it → how you stopped the bleeding → what you changed so it can\'t recur.',
@@ -540,7 +524,7 @@ $('s').oninput=e=>{fq=e.target.value.toLowerCase().trim();bank()};
 
 /* ---- mock ---- */
 const PLAN=[[0,5,'Intro & walkthrough'],[5,13,'Backend depth · the attack'],[13,21,'Node.js'],[21,30,'Postgres & Mongo'],
-[30,37,'Auth & health data'],[37,48,'System design'],[48,54,'Coding'],[54,58,'Fit'],[58,60,'Your questions']];
+[30,37,'Auth & health data'],[37,48,'System design'],[48,54,'Coding'],[54,58,'Incidents & wrap'],[58,60,'Your questions']];
 let left=3600,on=false,tk=null,end=0;
 function clock(){const s=Math.abs(left),neg=left<0;
   const c=$('clock');c.textContent=(neg?'-':'')+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
