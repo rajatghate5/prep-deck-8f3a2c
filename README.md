@@ -7,13 +7,13 @@ Interview prep pages, published via GitHub Pages.
 | Page | Link |
 |---|---|
 | Ayuradhar CTO Round — 37 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/ |
-| Interview MCQ Drill — 302 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/mcqs/ |
+| Interview MCQ Drill — 328 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/mcqs/ |
 
 ## Interview MCQ Drill
 
-302 multiple-choice questions covering JavaScript/TypeScript, React & Next.js,
+328 multiple-choice questions covering JavaScript/TypeScript, React & Next.js,
 Node.js, PostgreSQL & MongoDB, auth & security, AWS, DSA, CS fundamentals,
-system design, and HR rounds.
+system design, SEO, and HR rounds.
 
 - Tap an option for instant feedback plus an explanation citing its source section
 - Filter by level (Startup / Mid / MNC / India), track, or section
