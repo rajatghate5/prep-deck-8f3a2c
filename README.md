@@ -1,14 +1,18 @@
 # prep-deck
 
-Interview prep pages, published via GitHub Pages.
+Interview prep pages, served as static assets from a Cloudflare Worker.
 
 ## Live pages
 
 | Page | Link |
 |---|---|
-| Ayuradhar CTO Round — 37 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/ |
-| Interview MCQ Drill — 328 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/mcqs/ |
-| Interview Reboot — 54-day plan to 6 Nov | https://rajatghate5.github.io/prep-deck-8f3a2c/reboot/ |
+| Ayuradhar CTO Round — 37 questions | https://prep-deck.rajatghate5.workers.dev/ |
+| Interview MCQ Drill — 328 questions | https://prep-deck.rajatghate5.workers.dev/mcqs/ |
+| Interview Reboot — 54-day plan to 6 Nov | https://prep-deck.rajatghate5.workers.dev/reboot/ |
+
+> Previously these pointed at `rajatghate5.github.io/prep-deck-8f3a2c/`, but
+> GitHub Pages will not serve a **private** repo on the free plan, so those
+> links always 404'd. Hosting moved to Cloudflare Workers.
 
 ## Interview Reboot
 
@@ -59,5 +63,18 @@ no network requests.
 ## Note
 
 `robots.txt` disallows all crawlers and each page sets `noindex`, so these are
-not intended to be search-indexed. GitHub Pages serves publicly regardless of the
+not intended to be search-indexed. The Worker serves publicly regardless of the
 repo being private — treat these as unlisted, not secret.
+
+## Deployment
+
+```bash
+npx wrangler deploy
+```
+
+`wrangler.jsonc` points the assets directory at the repo root; `.assetsignore`
+keeps git metadata, config and this README from being uploaded. Cloudflare serves
+directory-style URLs, so `/reboot/` and `/reboot` both resolve.
+
+There is **no Git integration** on this Worker — pushing to `main` does not deploy.
+Run the command above after changing a page.
