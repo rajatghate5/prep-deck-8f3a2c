@@ -25,13 +25,26 @@ A dated revision plan built for a 1 hr/day budget against a fixed date
   Node/NestJS, MongoDB, PostgreSQL, auth & security, AWS, real-time, performance,
   system design, AI/LLM and CS fundamentals. Filter by topic; study modes are
   All / Unseen / Wrong.
-- **DSA** — 13 patterns, each with when to use it, the *tell* that identifies it in
-  a problem statement, complexity, and a commented JS template. 67 curated
-  LeetCode problems mapped to their pattern, plus 12 complexity drills.
+- **JS Drills** — all 41 questions from
+  [Array-and-Javascript-practice-questions](https://github.com/rajatghate5/Array-and-Javascript-practice-questions),
+  grouped into 8 categories (strings, array basics, dedupe & Sets, filter &
+  partition, sorting, math & recursion, nested data, reduce & aggregation).
+  Each category carries a worked JS template and the interview angle; each
+  question deep-links to its exact line in that repo. Plus 12 JS-mechanics
+  drills on the gotchas those questions expose (default sort comparator,
+  reduce with no seed, spread-in-reduce being quadratic, Set identity).
 - **Progress** — accuracy per topic, colour-coded, and every question missed.
 
-The day plan interleaves **30 min tech + 30 min DSA daily** rather than blocking
-tech first, because blocking is how DSA ends up untouched until the final fortnight.
+The day plan interleaves **30 min tech + 30 min JS drills daily** rather than
+blocking tech first, because blocking is how the coding half ends up untouched
+until the final fortnight. 41 days carry a new question, 8 are consolidation
+(redo the previous one from memory), and the last 5 are review and mock.
+
+> **Scope note:** the drill set is JavaScript fundamentals and array/object
+> manipulation, deliberately sourced from Rajat's own repo rather than LeetCode.
+> It does **not** cover algorithm patterns — no binary search, trees, graphs,
+> dynamic programming, heaps or backtracking. If a round turns out to be
+> LeetCode-style, this deck is not preparation for it.
 
 Question weighting leans on the work in the resume — the multi-framework split,
 SSE vs WebSockets, why Postgres over Mongo for a relational domain, payment
