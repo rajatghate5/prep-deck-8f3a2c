@@ -8,6 +8,38 @@ Interview prep pages, published via GitHub Pages.
 |---|---|
 | Ayuradhar CTO Round — 37 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/ |
 | Interview MCQ Drill — 328 questions | https://rajatghate5.github.io/prep-deck-8f3a2c/mcqs/ |
+| Interview Reboot — 54-day plan to 6 Nov | https://rajatghate5.github.io/prep-deck-8f3a2c/reboot/ |
+
+## Interview Reboot
+
+A dated revision plan built for a 1 hr/day budget against a fixed date
+(6 November 2026). Four tabs:
+
+- **Plan** — 54 dated cards, 14 Sep → 6 Nov, each pairing a tech topic with a DSA
+  pattern and that day's problems. Today is outlined and scrolls into view; past
+  days left unticked get a red edge so slippage is visible. The last 5 days are
+  review and mock only.
+- **Tech MCQs** — 100 questions across JavaScript/TypeScript, React, Next.js,
+  Node/NestJS, MongoDB, PostgreSQL, auth & security, AWS, real-time, performance,
+  system design, AI/LLM and CS fundamentals. Filter by topic; study modes are
+  All / Unseen / Wrong.
+- **DSA** — 13 patterns, each with when to use it, the *tell* that identifies it in
+  a problem statement, complexity, and a commented JS template. 67 curated
+  LeetCode problems mapped to their pattern, plus 12 complexity drills.
+- **Progress** — accuracy per topic, colour-coded, and every question missed.
+
+The day plan interleaves **30 min tech + 30 min DSA daily** rather than blocking
+tech first, because blocking is how DSA ends up untouched until the final fortnight.
+
+Question weighting leans on the work in the resume — the multi-framework split,
+SSE vs WebSockets, why Postgres over Mongo for a relational domain, payment
+idempotency, the OpenUI Lang streaming renderer — so several are written as the
+follow-up an interviewer asks *after* reading a given bullet.
+
+**Storage note:** this page uses `localStorage` (key `reboot.v1`), not
+`sessionStorage` like the other decks. A 54-day plan has to survive closing the
+tab. Progress is per-device, so phone and laptop track separately, and it is still
+never sent anywhere. "Clear all progress" on the Progress tab resets it.
 
 ## Interview MCQ Drill
 
@@ -27,4 +59,5 @@ no network requests.
 ## Note
 
 `robots.txt` disallows all crawlers and each page sets `noindex`, so these are
-not intended to be search-indexed.
+not intended to be search-indexed. GitHub Pages serves publicly regardless of the
+repo being private — treat these as unlisted, not secret.
